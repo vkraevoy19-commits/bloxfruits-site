@@ -2,20 +2,47 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-<meta name="description" content="База знаний Blox Fruits: рабочие коды, все фрукты, локации, расы, лучшие PVP билды и ваншот комбо!">
-<meta name="keywords" content="blox fruits, блокс фрутс коды, коды блокс фрутс, фрукты blox fruits, билды блокс фрутс">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все Фрукты — База Знаний Blox Fruits</title>
 <link rel="icon" type="image/png" href="favicon.png">
-    <title>Все фрукты</title>
+
+    <style>
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 40px; }
+        
+        .section-title { color: #fff; text-align: left; max-width: 1100px; margin: 30px auto 15px auto; font-size: 22px; border-left: 4px solid #ff4500; padding-left: 10px; }
+        .fruits-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1150px; margin: 0 auto; }
+        
+        .fruit-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 250px; text-align: left; box-shadow: 0 6px 15px rgba(0,0,0,0.6); position: relative; transition: 0.3s; }
+        .fruit-card:hover { border-color: #ff4500; transform: translateY(-3px); }
+        
+        /* Цвета редкости */
+        .rarity-badge { position: absolute; top: 15px; right: 15px; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        .mythical { background: #bf00ff; color: #fff; box-shadow: 0 0 10px #bf00ff; }
+        .legendary { background: #d4af37; color: #000; }
+        .rare { background: #2196f3; color: #fff; }
+        .common { background: #757575; color: #fff; }
+        
+        h3 { margin-top: 0; font-size: 20px; color: #fff; max-width: 150px; }
+        .prices { font-size: 14px; margin: 10px 0; line-height: 1.5; }
+        .price-beli { color: #4caf50; font-weight: bold; }
+        .price-robux { color: #00bcd4; font-weight: bold; }
+        
+        .best-for { font-size: 13px; color: #aaa; background: #1c1c1c; padding: 8px; border-radius: 6px; border: 1px solid #2d2d2d; margin-top: 10px; }
+        .best-for strong { color: #ff9800; }
+    </style>
 </head>
 <body>
-      <nav>
+
+    <nav>
         <a href="index.html">Главная</a> | 
-        <a href="fruits.html">Все фрукты</a> | 
+        <a href="fruits.html" style="color:#fff;">Все фрукты</a> | 
         <a href="tierlist.html">🔥 Тир-Лист</a> | 
-        <a href="swords.html" style="color:#fff;">⚔️ Мечи и Оружие</a> | 
+        <a href="swords.html">⚔️ Мечи и Оружие</a> | 
         <a href="trade.html">🧮 Калькулятор Трейдов</a> | 
         <a href="codes.html">Коды</a> | 
         <a href="locations.html">Локации</a> | 
@@ -23,89 +50,118 @@
         <a href="builds.html">Билды</a> | 
         <a href="combos.html">Ваншот Комбо</a> | 
         <a href="contact.html">Связь со мной</a>
- 
-    <hr>
-    <h1>Каталог фруктов</h1>
-    <ul>
-        <li>Яблоко</li>
-        <li>Банан</li>
-        <li>Апельсин</li>
-    </ul>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Все фрукты — Blox Fruits</title>
-</head>
-<body>
-        <hr>
+    </nav>
 
-    <h1>Абсолютно все Blox Fruits</h1>
-    <p>Список всех дьявольских плодов, разделенный по их редкости и цене в игре:</p>
+    <h1>🍎 Каталог Дьявольских Фруктов</h1>
+    <p class="subtitle">Полный список плодов, их официальная стоимость у Дилера и основное назначение в игре.</p>
 
-    <h2>🔴 Мифические (Mythical)</h2>
-    <ul>
-        <li><strong>Kitsune (Кицунэ)</strong> — 8,000,000 Beli</li>
-        <li><strong>Dragon (Дракон)</strong> — 15,000,000 Beli</li>
-        <li><strong>Dough (Тесто)</strong> — 2,800,000 Beli</li>
-        <li><strong>Yeti (Йети)</strong> — 5,000,000 Beli</li>
-        <li><strong>Gas (Газ)</strong> — 3,200,000 Beli</li>
-        <li><strong>T-Rex (Тирекс)</strong> — 2,700,000 Beli</li>
-        <li><strong>Leopard (Леопард)</strong> — 5,000,000 Beli</li>
-        <li><strong>Spirit (Дух)</strong> — 3,400,000 Beli</li>
-        <li><strong>Control (Контроль)</strong> — 3,200,000 Beli</li>
-        <li><strong>Venom (Яд)</strong> — 3,000,000 Beli</li>
-        <li><strong>Shadow (Тень)</strong> — 2,900,000 Beli</li>
-        <li><strong>Gravity (Гравитация)</strong> — 2,500,000 Beli</li>
-    </ul>
+    <!-- СЕКЦИЯ: ПРИРОДНЫЕ (NATURAL) -->
+    <div class="section-title">✨ Природные Фрукты (Natural)</div>
+    <div class="fruits-grid">
+        
+        <div class="fruit-card">
+            <div class="rarity-badge mythical">Мифический</div>
+            <h3>Spirit</h3>
+            <div class="prices">
+                <span class="price-beli">💰 3,400,000 Beli</span><br>
+                <span class="price-robux">💎 2,550 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Огромный AoE урон, сильные духи компаньоны, отлично для рейдов.</div>
+        </div>
 
-    <h2>🟣 Легендарные (Legendary)</h2>
-    <ul>
-        <li><strong>Mammoth (Мамонт)</strong> — 2,700,000 Beli</li>
-        <li><strong>Sound (Звук)</strong> — 1,700,000 Beli</li>
-        <li><strong>Blizzard (Метель)</strong> — 2,400,000 Beli</li>
-        <li><strong>Portal (Портал)</strong> — 1,900,000 Beli</li>
-        <li><strong>Rumble (Гром)</strong> — 2,100,000 Beli</li>
-        <li><strong>Pain (Боль)</strong> — 2,300,000 Beli</li>
-        <li><strong>Phoenix (Феникс)</strong> — 1,800,000 Beli</li>
-        <li><strong>Spider (Паук)</strong> — 1,500,000 Beli</li>
-        <li><strong>Love (Любовь)</strong> — 1,300,000 Beli</li>
-        <li><strong>Buddha (Будда)</strong> — 1,200,000 Beli</li>
-    </ul>
+        <div class="fruit-card">
+            <div class="rarity-badge legendary">Легендарный</div>
+            <h3>Portal</h3>
+            <div class="prices">
+                <span class="price-beli">💰 1,900,000 Beli</span><br>
+                <span class="price-robux">💎 2,000 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Лучшая мобильность в игре, идеален для побега или внезапного PvP.</div>
+        </div>
 
-    <h2>🔵 Редкие (Rare)</h2>
-    <ul>
-        <li><strong>Quake (Землетрясение)</strong> — 1,000,000 Beli</li>
-        <li><strong>Magma (Магма)</strong> — 960,000 Beli</li>
-        <li><strong>Ghost (Призрак)</strong> — 940,000 Beli</li>
-        <li><strong>Barrier (Барьер)</strong> — 800,000 Beli</li>
-        <li><strong>Rubber (Резина)</strong> — 750,000 Beli</li>
-        <li><strong>Light (Свет)</strong> — 650,000 Beli</li>
-    </ul>
+        <div class="fruit-card">
+            <div class="rarity-badge rare">Редкий</div>
+            <h3>Light</h3>
+            <div class="prices">
+                <span class="price-beli">💰 650,000 Beli</span><br>
+                <span class="price-robux">💎 1,100 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Самый быстрый полет, встроенный меч, топ для прокачки в Первом Море.</div>
+        </div>
 
-    <h2>🟢 Необычные (Uncommon)</h2>
-    <ul>
-        <li><strong>Diamond (Алмаз)</strong> — 600,000 Beli</li>
-        <li><strong>Eagle (Орёл)</strong> — 550,000 Beli</li>
-        <li><strong>Sand (Песок)</strong> — 420,000 Beli</li>
-        <li><strong>Ice (Лёд)</strong> — 350,000 Beli</li>
-        <li><strong>Falcon (Сокол)</strong> — 300,000 Beli</li>
-        <li><strong>Flame (Огонь)</strong> — 250,000 Beli</li>
-        <li><strong>Spike (Шипы)</strong> — 180,000 Beli</li>
-    </ul>
+    </div>
 
-    <h2>⚪ Обычные (Common)</h2>
-    <ul>
-        <li><strong>Smoke (Дым)</strong> — 100,000 Beli</li>
-        <li><strong>Bomb (Бомба)</strong> — 80,000 Beli</li>
-        <li><strong>Spring (Пружина)</strong> — 60,000 Beli</li>
-        <li><strong>Chop (Кусочки)</strong> — 30,000 Beli</li>
-        <li><strong>Blade (Лезвие)</strong> — 30,000 Beli</li>
-        <li><strong>Spin (Вращение)</strong> — 7,500 Beli</li>
-        <li><strong>Rocket (Ракета)</strong> — 5,000 Beli</li>
-    </ul>
+    <!-- СЕКЦИЯ: СТИХИЙНЫЕ (ELEMENTAL) -->
+    <div class="section-title">🔥 Стихийные Фрукты (Elemental / Logia)</div>
+    <div class="fruits-grid">
+        
+        <div class="fruit-card">
+            <div class="rarity-badge mythical">Мифический</div>
+            <h3>Dough</h3>
+            <div class="prices">
+                <span class="price-beli">💰 2,800,000 Beli</span><br>
+                <span class="price-robux">💎 2,400 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Пробужденная версия дает бесконечные оглушающие PvP комбо.</div>
+        </div>
+
+        <div class="fruit-card">
+            <div class="rarity-badge legendary">Легендарный</div>
+            <h3>Blizzard</h3>
+            <div class="prices">
+                <span class="price-beli">💰 2,400,000 Beli</span><br>
+                <span class="price-robux">💎 2,250 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Огромная ледяная буря, стягивающая врагов, шикарно для фарма фабрики.</div>
+        </div>
+
+        <div class="fruit-card">
+            <div class="rarity-badge rare">Редкий</div>
+            <h3>Magma</h3>
+            <div class="prices">
+                <span class="price-beli">💰 850,000 Beli</span><br>
+                <span class="price-robux">💎 1,300 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Безумный урон по площади, позволяет ходить по воде после пробуждения.</div>
+        </div>
+
+    </div>
+
+    <!-- СЕКЦИЯ: ЗВЕРИНЫЕ (BEAST) -->
+    <div class="section-title">🐉 Зверинные Фрукты (Beast / Zoan)</div>
+    <div class="fruits-grid">
+        
+        <div class="fruit-card">
+            <div class="rarity-badge mythical">Мифический</div>
+            <h3>Kitsune</h3>
+            <div class="prices">
+                <span class="price-beli">💰 8,000,000 Beli</span><br>
+                <span class="price-robux">💎 4,000 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Невероятная скорость бега, мощные М1 удары лапами, мета 2026 года.</div>
+        </div>
+
+        <div class="fruit-card">
+            <div class="rarity-badge mythical">Мифический</div>
+            <h3>Dragon</h3>
+            <div class="prices">
+                <span class="price-beli">💰 3,500,000 Beli</span><br>
+                <span class="price-robux">💎 2,600 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Массивное превращение в дракона, огромный бафф к защите и урону.</div>
+        </div>
+
+        <div class="fruit-card">
+            <div class="rarity-badge legendary">Легендарный</div>
+            <h3>Buddha</h3>
+            <div class="prices">
+                <span class="price-beli">💰 1,200,000 Beli</span><br>
+                <span class="price-robux">💎 1,650 Robux</span>
+            </div>
+            <div class="best-for"><strong>Плюсы:</strong> Превращает в гиганта, увеличивая дальность ударов мечом в разы.</div>
+        </div>
+
+    </div>
+
 </body>
 </html>

@@ -2,76 +2,180 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расы и Прокачка — База Знаний Blox Fruits</title>
 <link rel="icon" type="image/png" href="favicon.png">
-    <title>Гайд по Расам и V4 — Blox Fruits</title>
+
+    <style>
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 40px; }
+        
+        .races-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .race-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 25px; width: 320px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: all 0.3s ease; position: relative; }
+        .race-card:hover { border-color: #ff4500; transform: translateY(-5px); box-shadow: 0 12px 25px rgba(255, 69, 0, 0.2); }
+        
+        .race-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #fff; }
+        .badge-start { background: #4caf50; }
+        .badge-special { background: #9c27b0; box-shadow: 0 0 10px #9c27b0; }
+        
+        h3 { color: #fff; margin-top: 5px; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid #252525; padding-bottom: 10px; }
+        
+        .buffs-box { background: #1c1c1c; padding: 12px; border-radius: 8px; border: 1px solid #2d2d2d; margin-bottom: 15px; }
+        .buffs-title { font-size: 13px; font-weight: bold; color: #ff9800; text-transform: uppercase; margin-bottom: 5px; }
+        .buffs-list { font-size: 14px; color: #ffeb3b; margin: 0; padding-left: 20px; line-height: 1.5; }
+        
+        .get-info { font-size: 14px; color: #ccc; line-height: 1.6; }
+        .get-info strong { color: #ff6347; }
+        
+        .guide-box { max-width: 750px; margin: 40px auto 0 auto; background: #141414; border: 2px dashed #ff4500; padding: 25px; border-radius: 12px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
+        .guide-box h2 { color: #ff4500; margin-top: 0; font-size: 20px; text-align: center; border-bottom: 1px solid #252525; padding-bottom: 10px; }
+        .guide-box h3 { color: #ff9800; font-size: 16px; margin-top: 15px; border: none; padding: 0; }
+        .guide-box p, .guide-box ol { margin: 10px 0; color: #ccc; font-size: 14px; line-height: 1.6; }
+        .guide-box ol { padding-left: 20px; }
+    </style>
 </head>
 <body>
-    <!-- Навигация -->
+
     <nav>
         <a href="index.html">Главная</a> | 
         <a href="fruits.html">Все фрукты</a> | 
         <a href="tierlist.html">🔥 Тир-Лист</a> | 
-        <a href="swords.html" style="color:#fff;">⚔️ Мечи и Оружие</a> | 
+        <a href="swords.html">⚔️ Мечи и Оружие</a> | 
         <a href="trade.html">🧮 Калькулятор Трейдов</a> | 
         <a href="codes.html">Коды</a> | 
         <a href="locations.html">Локации</a> | 
-        <a href="races.html">Расы</a> | 
+        <a href="races.html" style="color:#fff;">Расы</a> | 
         <a href="builds.html">Билды</a> | 
         <a href="combos.html">Ваншот Комбо</a> | 
         <a href="contact.html">Связь со мной</a>
- 
-    <hr>
+    </nav>
 
-    <h1>Все Расы, Шансы и Мега-Гайд на V4</h1>
-    <p>Здесь расписано всё: от шансов получить расу при ролле до секретов Храма Времени и Голубой Шестерёнки!</p>
+    <h1>🧬 Расы и их Способности</h1>
+    <p class="subtitle">Узнай особенности каждой расы, какие баффы они дают в бою и как прокачать их до максимальной силы!</p>
 
-    <h2>🎲 Базовые Расы и Шансы выбивания</h2>
-    <p>При первом заходе в игру или при реролле у Торговца (за 3,000 Фрагментов или 90 Робуксов) ты получаешь расу с таким шансом:</p>
-    <ul>
-        <li><strong>Человек (Human)</strong> — 62% шанс (Самая частая)</li>
-        <li><strong>Шарк / Рыбочеловек (Shark)</strong> — 12.6% шанс</li>
-        <li><strong>Ангел / Скайпиец (Angel)</strong> — 12.6% шанс</li>
-        <li><strong>Минк / Кролик (Mink)</strong> — 12.6% шанс</li>
-    </ul>
-    <p><em>Внимание: Секретные расы (Гуль, Киборг, Драко) НЕЛЬЗЯ выбить через обычный реролл! Только по квестам.</em></p>
+    <div class="races-container">
+        
+        <!-- Раса 1: Человек -->
+        <div class="race-card">
+            <div class="race-badge badge-start">Базовая</div>
+            <h3>Человек (Human)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>💥 Безумный прирост к PvP урону</li>
+                    <li>⚡ Исчезновение (Flash Step) перезаряжается быстрее</li>
+                    <li>🩸 Активация «Психоза» на V3 увеличивает урон при потере ХП</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Дается при первом заходе в игру с шансом 25%. Также можно сменить у Торговца Расами.
+            </div>
+        </div>
 
-    <h2>💀 Как открыть секретные расы</h2>
-    <ul>
-        <li><strong>Гуль (Ghoul):</strong> Нужен 1000+ уровень. Иди на Проклятый корабль во 2-м море, собери 100 Эктоплазмы с мобов и выбей Факел (Hellfire Torch) с Босса Капитана, затем отдай NPC Experimic.</li>
-        <li><strong>Киборг (Cyborg):</strong> Нужно выбить Fist of Darkness (Кулак Тьмы), вставить его в машину на рейде Ло во 2-м море, купить Core Brain за 2500 фрагментов и пройти квест.</li>
-    </ul>
+        <!-- Раса 2: Рыбочеловек -->
+        <div class="race-card">
+            <div class="race-badge badge-start">Базовая</div>
+            <h3>Акула (Shark)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>🌊 Полный иммунитет к урону от воды (на V2)</li>
+                    <li>🛡️ Огромный щит, блокирующий урон (на V3)</li>
+                    <li>🦈 Повышенная скорость плавания</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Выпадает на старте с шансом 25% или покупается за Слёзы/Робуксы у NPC.
+            </div>
+        </div>
 
-    <h2>⚡ МЕГА-ГАЙД: Как получить Расу V4 (Пробуждение)</h2>
-    <p>Это самый сложный квест в 3-м море. Выполняй строго по пунктам:</p>
+        <!-- Раса 3: Минки -->
+        <div class="race-card">
+            <div class="race-badge badge-start">Базовая</div>
+            <h3>Кролик (Mink)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>🏃 Самая высокая скорость бега в игре</li>
+                    <li>🌀 Дальность рывка увеличена</li>
+                    <li>⚡ Минимальные затраты энергии на бег</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Стартовый шанс 25% или случайный реролл у Алхимика.
+            </div>
+        </div>
 
-    <h3>1. Обязательные условия (Подготовка):</h3>
-    <ul>
-        <li>У тебя уже должна быть прокачана версия <strong>V3</strong> твоей расы.</li>
-        <li>Ты должен победить босса <strong>Rip_Indra</strong> (чтобы открыть порталы).</li>
-        <li>Ты должен победить босса <strong>Dough King</strong> (Король Теста) и получить предмет <strong>Mirror Fractal</strong> (Зеркальный Фрактал) — без него квест не начнется!</li>
-    </ul>
+        <!-- Раса 4: Ангел -->
+        <div class="race-card">
+            <div class="race-badge badge-start">Базовая</div>
+            <h3>Ангел (Angel)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>🪶 Высокие прыжки и полет в воздухе</li>
+                    <li>💚 Быстрая регенерация здоровья и энергии</li>
+                    <li>✨ Аура, которая оглушает врагов поблизости на V3</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Стартовый шанс 25% либо стандартный реролл расы.
+            </div>
+        </div>
 
-    <h3>2. Храм Времени и Каменная Плита:</h3>
-    <ul>
-        <li>Иди в Замок на Море (Castle on the Sea), подойди к каменной плите позади комнаты босса и поговори с ней.</li>
-        <li>После этого плыви к Большому Дереву (Great Tree), заберись на самую вершину и поговори с невидимым NPC по имени "MISC". Он телепортирует тебя в <strong>Храм Времени (Temple of Time)</strong>. Там поговори со вторым NPC внутри.</li>
-    </ul>
+        <!-- Раса 5: Киборг -->
+        <div class="race-card">
+            <div class="race-badge badge-special">Секретная</div>
+            <h3>Киборг (Cyborg)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>⚡ Электрический купол, бьющий током по площади</li>
+                    <li>🛡️ Повышенная защита от комбо противника</li>
+                    <li>🔋 Быстрое восполнение энергии при получении урона</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Пройти скрытый квест с Кулаком Тьмы (Fist of Darkness) и Ядром во Втором Море. Стоимость: 2,500 Фрагментов.
+            </div>
+        </div>
 
-    <h3>3. Поиск Острова Миражей и Голубой Шестерёнки (Blue Gear):</h3>
-    <ul>
-        <li>Это самая потная часть. Тебе нужно дождаться <strong>Полнолуния (Full Moon)</strong> в игре.</li>
-        <li>Садись на лодку и плыви в опасные зоны океана (уровень опасности 4, 5 или 6), пока перед тобой не заспавнится редкий <strong>Остров Миражей (Mirage Island)</strong>.</li>
-        <li>Заберись на самую высокую точку Миража, включи Инстинкт (Haki) и смотри прямо на Полную Луну около 15 секунд. Луна начнет ярко светиться!</li>
-        <li><strong>Ищи Шестерёнку:</strong> Сразу после этого на Острове Миражей в случайном месте появится светящаяся <strong>Голубая Шестерёнка (Blue Gear)</strong>. У тебя есть время, пока Мираж не исчезнет, чтобы найти её в траве или за скалами и забрать!</li>
-    </ul>
+        <!-- Раса 6: Гуль -->
+        <div class="race-card">
+            <div class="race-badge badge-special">Секретная</div>
+            <h3>Гуль (Ghoul)</h3>
+            <div class="buffs-box">
+                <div class="buffs-title font-bold">Главные баффы:</div>
+                <ul class="buffs-list">
+                    <li>🧛 Вампиризм (восстановление ХП от ударов стилей боя)</li>
+                    <li>🌙 Огромная скорость бега в ночное время</li>
+                    <li>⏳ Сокращение перезарядки всех скиллов</li>
+                </ul>
+            </div>
+            <div class="get-info">
+                <strong>Как получить:</strong> Поговорить с NPC Экспериментатор на Проклятом Корабле во Втором Море. Требуется: 100 Эктоплазмы и Факел Ада.
+            </div>
+        </div>
 
-    <h3>4. Нажатие Рычага и Испытания (Trials):</h3>
-    <ul>
-        <li>Как только Голубая Шестерёнка у тебя в кармане, возвращайся в Храм Времени. Теперь ты сможешь <strong>нажать на секретный Рычаг (Lever)</strong> на стене, чтобы открыть двери к испытаниям.</li>
-        <li>Собери команду: тебе нужны еще <strong>минимум 2 друга других рас</strong> (у всех должно быть открыто это место).</li>
-        <li>Встаньте каждый перед дверью своей расы и одновременно нажмите кнопку <code>T</code> (активируйте скилл V3). Вас телепортирует на испытания!</li>
-        <li>Пройдите свои испытания (например, убить босса, пройти лабиринт или увернуться от ракет), победите друзей в мини-ПВП в конце, и ты сможешь подойти к Древним Часам и вставить первую шестерёнку V4!</li>
-    </ul>
+    </div>
+
+    <!-- Краткий Гайд по Прокачке -->
+    <div class="guide-box">
+        <h2>🚀 Как пробуждать расы (V2, V3, V4)</h2>
+        
+        <h3>Раса V2 (Второе море)</h3>
+        <p>Поговори с Алхимиком в Зеленой Зоне, найди 3 цветка (Красный, Синий, Желтый) по всей карте и принеси ему 500,000 Бели.</p>
+        
+        <h3>Раса V3 (Второе море)</h3>
+        <p>Победи босса Джереми, найди секретную комнату под скалой, возьми квест у NPC Сын Ароу и выполни индивидуальное задание для своей расы (например, убить 30 мобов). Стоимость: 2,000,000 Бели.</p>
+        
+        <h3>Раса V4 (Третье море)</h3>
+        <p>Самое мощное пробуждение. Требуется победить босса Король Теста или Индра, найти Мистический Остров во время Полнолуния, настроить зеркало на луну и пройти «Испытания Храма Времен» вместе с друзьями других рас.</p>
+    </div>
+
 </body>
 </html>
