@@ -2,77 +2,105 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-<meta name="description" content="База знаний Blox Fruits: рабочие коды, все фрукты, локации, расы, лучшие PVP билды и ваншот комбо!">
-<meta name="keywords" content="blox fruits, блокс фрутс коды, коды блокс фрутс, фрукты blox fruits, билды блокс фрутс">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="favicon.png">
-    <title>Ваншот Комбо — Blox Fruits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваншот Комбо — База Знаний Blox Fruits</title>
+    <style>
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 30px; }
+        
+        .combos-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .combo-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 25px; width: 320px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .combo-card:hover { border-color: #ff4500; transform: translateY(-5px); box-shadow: 0 12px 25px rgba(255, 69, 0, 0.2); }
+        
+        .combo-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; background: #ff4500; color: #fff; }
+        .difficulty-easy { background: #4caf50; }
+        .difficulty-medium { background: #ff9800; }
+        .difficulty-hard { background: #e91e63; box-shadow: 0 0 10px #e91e63; }
+        
+        h3 { color: #fff; margin-top: 5px; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid #252525; padding-bottom: 10px; }
+        .build-info { font-size: 13px; color: #aaa; margin-bottom: 15px; line-height: 1.4; }
+        .build-info strong { color: #ff6347; }
+        
+        .sequence-title { font-size: 14px; font-weight: bold; color: #ff4500; margin-bottom: 8px; text-transform: uppercase; }
+        .combo-sequence { background: #1c1c1c; padding: 12px; border-radius: 8px; border: 1px solid #2d2d2d; font-family: 'Courier New', Courier, monospace; font-size: 14px; color: #00ff66; font-weight: bold; line-height: 1.6; }
+        
+        .note { font-size: 13px; color: #999; margin-top: 15px; font-style: italic; }
+    </style>
 </head>
 <body>
-    <!-- Обновленная навигация -->
+
     <nav>
         <a href="index.html">Главная</a> | 
         <a href="fruits.html">Все фрукты</a> | 
         <a href="tierlist.html">🔥 Тир-Лист</a> | 
-        <a href="swords.html" style="color:#fff;">⚔️ Мечи и Оружие</a> | 
+        <a href="swords.html">⚔️ Мечи и Оружие</a> | 
         <a href="trade.html">🧮 Калькулятор Трейдов</a> | 
         <a href="codes.html">Коды</a> | 
         <a href="locations.html">Локации</a> | 
         <a href="races.html">Расы</a> | 
         <a href="builds.html">Билды</a> | 
-        <a href="combos.html">Ваншот Комбо</a> | 
+        <a href="combos.html" style="color:#fff;">Ваншот Комбо</a> | 
         <a href="contact.html">Связь со мной</a>
- 
-    <hr>
+    </nav>
 
-    <h1>Смертоносные Ваншот-Комбо (PVP Гайд)</h1>
-    <p>Внимательно изучи последовательность нажатия скиллов. Если прожать всё быстро и без ошибок — у врага 0 шансов выжить!</p>
+    <h1>🩸 Топовые Ваншот Комбо для PvP</h1>
+    <p class="subtitle">Используй эти связки атак, чтобы стирать врагов за секунды и быстро фармить Баунти!</p>
 
-    <h2>🍩 1. Легендарное комбо через Dough (Тесто)</h2>
-    <p><em>Самое популярное и простое в исполнении ваншот-комбо. Требует пробужденный фрукт Теста.</em></p>
-    <ul>
-        <li><strong>Снаряжение:</strong> Dough (Awk) + Godhuman + Cursed Dual Katana (CDK) + Soul Guitar</li>
-        <li><strong>Связка кнопок:</strong></li>
-        <li>1. Гитара <code>X</code> (Оглушает врага на дистанции)</li>
-        <li>2. Dough <code>X</code> (Притягивает и зажимает цель)</li>
-        <li>3. Dough <code>V</code> (Подбрасывает в воздух и наносит огромный урон)</li>
-        <li>4. Dough <code>C</code> (Впечатывает врага в землю)</li>
-        <li>5. Godhuman <code>Z</code> (Апперкот в воздухе)</li>
-        <li>6. CDK <code>Z</code> -> <code>X</code> (Быстрый рывок и добивание мечами)</li>
-    </ul>
+    <div class="combos-container">
+        
+        <!-- Комбо 1: Тестовое через Dough -->
+        <div class="combo-card">
+            <div class="combo-badge difficulty-easy">Легкое</div>
+            <h3>Классика Теста</h3>
+            <div class="build-info">
+                <strong>Фрукт:</strong> Dough (Пробужденный)<br>
+                <strong>Стиль:</strong> Godhuman<br>
+                <strong>Меч:</strong> Cursed Dual Katana (CDK)
+            </div>
+            <div class="sequence-title">Связка атак:</div>
+            <div class="combo-sequence">
+                Dough X ➔ Dough V ➔ Godhuman C ➔ CDK Z ➔ CDK X ➔ Godhuman Z
+            </div>
+            <p class="note">*Совет: Главное — попасть первым X движением Теста, чтобы обездвижить цель.</p>
+        </div>
 
-    <h2>❄️ 2. Комбо "Ледяной Контроль" (Ice + Саппорт)</h2>
-    <p><em>Идеально для новичков в PVP. Лед намертво замораживает цель, не давая нажать уворот.</em></p>
-    <ul>
-        <li><strong>Снаряжение:</strong> Ice (Awk) + Godhuman + Dragon Trident (Драконий Трезубец) + Soul Guitar</li>
-        <li><strong>Связка кнопок:</strong></li>
-        <li>1. Ice <code>V</code> (Замораживает врага на месте)</li>
-        <li>2. Ice <code>Z</code> (Дополнительный урон и продление заморозки)</li>
-        <li>3. Dragon Trident <code>X</code> (Создает водяной вихрь, стягивающий врага)</li>
-        <li>4. Гитара <code>X</code> (Удерживает цель в воздухе)</li>
-        <li>5. Godhuman <code>Z</code> (Рывок вперед)</li>
-        <li>6. Godhuman <code>C</code> (Мощный взрывной удар под себя)</li>
-    </ul>
+        <!-- Комбо 2: Киберспортивное через Портал -->
+        <div class="combo-card">
+            <div class="combo-badge difficulty-medium">Среднее</div>
+            <h3>Тактика Портала</h3>
+            <div class="build-info">
+                <strong>Фрукт:</strong> Portal<br>
+                <strong>Стиль:</strong> Sanguine Art<br>
+                <strong>Меч:</strong> Shark Anchor (Акулий Якорь)
+            </div>
+            <div class="sequence-title">Связка атак:</div>
+            <div class="combo-sequence">
+                Portal Z ➔ Shark Anchor X ➔ Sanguine C ➔ Sanguine Z ➔ Shark Anchor Z
+            </div>
+            <p class="note">*Совет: После Portal Z сразу притягивай врага Якорем и не давай ему уйти в инстинкт.</p>
+        </div>
 
-    <h2>🦊 3. Спам-комбо через Kitsune (Лис)</h2>
-    <p><em>Для тех, кто любит бешеную скорость и агрессивный стиль.</em></p>
-    <ul>
-        <li><strong>Снаряжение:</strong> Kitsune + Sanguine Art + Fox Lamp (Лампа)</li>
-        <li><strong>Связка кнопок:</strong></li>
-        <li>1. Kitsune <code>C</code> (Быстрый рывок, который станит врага)</li>
-        <li>2. Sanguine Art <code>C</code> (Призывает кровавые пасти, которые грызут цель и хилят тебя)</li>
-        <li>3. Fox Lamp <code>Z</code> -> <code>X</code> (Залп огненными лисами)</li>
-        <li>4. Kitsune <code>Z</code> (Быстрые укусы)</li>
-        <li>5. Kitsune <code>X</code> (Финальный взрыв синего пламени)</li>
-    </ul>
+        <!-- Комбо 3: Скилловое через Кицуне -->
+        <div class="combo-card">
+            <div class="combo-badge difficulty-hard">Сложное</div>
+            <h3>Гнев Кицуне</h3>
+            <div class="build-info">
+                <strong>Фрукт:</strong> Kitsune<br>
+                <strong>Стиль:</strong> Godhuman<br>
+                <strong>Меч:</strong> ТТК (True Triple Katana)
+            </div>
+            <div class="sequence-title">Связка атак:</div>
+            <div class="combo-sequence">
+                Kitsune C ➔ Kitsune Z ➔ Godhuman C ➔ TTK X ➔ TTK Z ➔ Godhuman X
+            </div>
+            <p class="note">*Совет: Требует идеального тайминга и низкого пинга, чтобы враг не успел прожать Flash Step.</p>
+        </div>
 
-    <h2>💡 Советы для успешного ваншота:</h2>
-    <ul>
-        <li>Включай <strong>Shift Lock</strong> в настройках Роблокса, чтобы точнее целиться скиллами.</li>
-        <li>Используй расу <strong>Cyborg</strong> или <strong>Human</strong> для максимального буста урона во время комбо.</li>
-        <li>Тренируй тайминги на обычных боссах (например, на Джереми), перед тем как идти на реальных игроков.</li>
-    </ul>
+    </div>
+
 </body>
 </html>
