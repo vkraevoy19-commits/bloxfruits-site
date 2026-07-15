@@ -4,24 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мечи и Оружие — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
         body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
         nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
         nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
-        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 25px; }
+        
+        /* Фильтры */
+        .filter-section { background: #141414; border: 1px solid #222; border-radius: 12px; padding: 15px; max-width: 600px; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .filter-label { font-size: 12px; color: #666; text-transform: uppercase; font-weight: bold; margin-bottom: 2px; }
+        .filter-btn { background: #1c1c1c; border: 1px solid #333; color: #aaa; padding: 8px 16px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { border-color: #ff4500; color: #fff; background: #2a120a; box-shadow: 0 0 8px rgba(255, 69, 0, 0.3); }
+        
+        /* Карточки */
         .swords-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
-        .sword-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 300px; text-align: left; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.7); }
-        .sword-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-        .common .sword-badge { background: #555; color: #fff; }
+        .sword-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 300px; text-align: left; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.7); transition: transform 0.2s; }
+        .sword-card:hover { transform: translateY(-3px); border-color: #ff4500; }
+        
+        /* Редкость */
+        .sword-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
         .legendary .sword-badge { background: #d4af37; color: #000; box-shadow: 0 0 10px #d4af37; }
         .mythical .sword-badge { background: #bf00ff; color: #fff; box-shadow: 0 0 15px #bf00ff; }
-        h3 { color: #ff6347; margin-top: 5px; font-size: 20px; }
-        .price { color: #4caf50; font-size: 18px; font-weight: bold; margin: 10px 0; }
-        p { font-size: 14px; line-height: 1.5; color: #ccc; margin: 8px 0; }
+        
+        h3 { color: #ff6347; margin: 5px 0 10px 0; font-size: 19px; line-height: 1.2; padding-right: 75px; }
+        .price { color: #4caf50; font-size: 16px; font-weight: bold; margin: 8px 0; }
+        p { font-size: 13.5px; line-height: 1.5; color: #ccc; margin: 6px 0; }
         strong { color: #fff; }
+        .sea-tag { display: inline-block; background: #222; border: 1px solid #444; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #ff9800; font-weight: bold; margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -40,34 +54,121 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>⚔️ Каталог Оружия и Мечей</h1>
-    <p>Узнай, как получить сильнейшие клинки в игре, где они находятся и сколько стоят.</p>
+    <h1>⚔️ ТОП Оружие в Blox Fruits</h1>
+    <p class="subtitle">Самые популярные, сильные и разыскиваемые мечи и ганны среди игроков.</p>
 
-    <div class="swords-container">
-        <div class="sword-card common">
-            <div class="sword-badge">Обычный</div>
-            <h3>Катана / Сабля</h3>
-            <p class="price">💰 1,000 Бели</p>
-            <p><strong>Где найти:</strong> Первый Sea, Стартовый остров.</p>
-            <p><strong>Как получить:</strong> Продается в самом начале у Дилера мечей.</p>
-        </div>
-
-        <div class="sword-card legendary">
-            <div class="sword-badge">Легендарный</div>
-            <h3>Сабер (Saber)</h3>
-            <p class="price">🟢 Бесплатно (Босс)</p>
-            <p><strong>Где найти:</strong> Первый Sea, Джунгли.</p>
-            <p><strong>Как получить:</strong> Реши головоломку с кнопками на деревьях, возьми факел, чашу, помоги больному человеку и победи босса Saber Expert.</p>
-        </div>
-
-        <div class="sword-card mythical">
-            <div class="sword-badge">Мифический</div>
-            <h3>True Triple Katana</h3>
-            <p class="price">💰 6,000,000 Бели</p>
-            <p><strong>Где найти:</strong> Второй Sea, Зеленая Зона.</p>
-            <p><strong>Как получить:</strong> Купи мечи Шисуи, Садди и Вандо у Скрытого торговца (по 2 млн каждый). Прокачай им 300 масти и соедини у NPC на вершине стебля.</p>
+    <!-- Простой фильтр типа -->
+    <div class="filter-section">
+        <div class="filter-label">Показать на странице</div>
+        <div class="filter-group">
+            <button class="filter-btn active" onclick="filterPopular('all')">Все топы</button>
+            <button class="filter-btn" onclick="filterPopular('sword')">⚔️ Только Мечи</button>
+            <button class="filter-btn" onclick="filterPopular('gun')">🔫 Только Ганны</button>
         </div>
     </div>
 
+    <div class="swords-container">
+        
+        <!-- Cursed Dual Katana -->
+        <div class="sword-card mythical" data-type="sword">
+            <div class="sword-badge">Мифический</div>
+            <h3>Cursed Dual Katana (CDK)</h3>
+            <p class="price">🟢 Бесплатно (Квест)</p>
+            <p><strong>Где найти:</strong> 3-е Море, Особняк Черепа.</p>
+            <p><strong>Как получить:</strong> Прокачай Yama и Tushita до 350 мастери. Пройди свитки испытаний Алхимика и Лодки в Особняке, а затем победи босса.</p>
+            <span class="sea-tag">3rd Sea</span>
+        </div>
+
+        <!-- True Triple Katana -->
+        <div class="sword-card mythical" data-type="sword">
+            <div class="sword-badge">Мифический</div>
+            <h3>True Triple Katana (TTK)</h3>
+            <p class="price">💰 6,000,000 Бели</p>
+            <p><strong>Где найти:</strong> 2-е Море, Зеленая Зона.</p>
+            <p><strong>Как получить:</strong> Купи мечи Шисуи, Садди и Вандо у Скрытого торговца за 2 млн каждый. Прокачай им по 300 масти и соедини у NPC на вершине стебля.</p>
+            <span class="sea-tag">2nd Sea</span>
+        </div>
+
+        <!-- Shark Anchor -->
+        <div class="sword-card legendary" data-type="sword">
+            <div class="sword-badge">Легендарный</div>
+            <h3>Shark Anchor (Якорь)</h3>
+            <p class="price">🦈 Крафт + Охота</p>
+            <p><strong>Где найти:</strong> 3-е Море, Аванпост Тики.</p>
+            <p><strong>Как получить:</strong> Скрафти предмет Monster Magnet у Акулы-NPC, плыви в бурю (зона опасности 5-6) и убей секретного Терроршарка со 195k HP.</p>
+            <span class="sea-tag">3rd Sea</span>
+        </div>
+
+        <!-- Dark Blade -->
+        <div class="sword-card mythical" data-type="sword">
+            <div class="sword-badge">Мифический</div>
+            <h3>Dark Blade (Yoru)</h3>
+            <p class="price">💳 1,200 Robux</p>
+            <p><strong>Где найти:</strong> Любое море / Магазин.</p>
+            <p><strong>Как получить:</strong> Покупается за реальную валюту (донат) или получается подарком/обменом через систему игровых Трейдов.</p>
+            <span class="sea-tag">All Seas</span>
+        </div>
+
+        <!-- Fox Lamp -->
+        <div class="sword-card legendary" data-type="sword">
+            <div class="sword-badge">Легендарный</div>
+            <h3>Fox Lamp (Лисья Лампа)</h3>
+            <p class="price">🦊 Ивент Кицунэ</p>
+            <p><strong>Где найти:</strong> 3-е Море, Остров Кицунэ.</p>
+            <p><strong>Как получить:</strong> Дождись Полнолуния в море, найди спавн острова Кицунэ, собери 20-25 лазурных огоньков за время и обменяй их у Каменного Храма.</p>
+            <span class="sea-tag">3rd Sea</span>
+        </div>
+
+        <!-- Soul Guitar -->
+        <div class="sword-card mythical" data-type="gun">
+            <div class="sword-badge">Мифический</div>
+            <h3>Soul Guitar (Гитара)</h3>
+            <p class="price">💀 Ночной Квест</p>
+            <p><strong>Где найти:</strong> 3-е Море, Замок с привидениями.</p>
+            <p><strong>Как получить:</strong> При полной луне на кладбище активируй квест, реши 4 логические загадки и скрафти гитару за 500 костей, 250 эктоплазмы и 1 Темный Осколок.</p>
+            <span class="sea-tag">3rd Sea</span>
+        </div>
+
+        <!-- Saber -->
+        <div class="sword-card legendary" data-type="sword">
+            <div class="sword-badge">Легендарный</div>
+            <h3>Saber (Сабер)</h3>
+            <p class="price">🟢 Бесплатно (Босс)</p>
+            <p><strong>Где найти:</strong> 1-е Море, Джунгли.</p>
+            <p><strong>Как получить:</strong> Нажми 5 скрытых кнопок на деревьях/камнях, возьми факел, набери воды в чашу, помоги нищему, поговори с его сыном и убей босса Saber Expert.</p>
+            <span class="sea-tag">1st Sea</span>
+        </div>
+
+        <!-- Acidum Rifle -->
+        <div class="sword-card legendary" data-type="gun">
+            <div class="sword-badge">Легендарный</div>
+            <h3>Acidum Rifle (Кислотная)</h3>
+            <p class="price">🟢 Награда Завода</p>
+            <p><strong>Где найти:</strong> 2-е Море, Фабрика.</p>
+            <p><strong>Как получить:</strong> Участвуй в рейде на Фабрику (Завод) и нанеси наибольший урон по центральному Ядру, либо выбей с Фабричного Босса.</p>
+            <span class="sea-tag">2nd Sea</span>
+        </div>
+
+    </div>
+
+    <!-- Быстрый JS фильтр -->
+    <script>
+        function filterPopular(type) {
+            // Смена активного класса на кнопках
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Фильтрация карточек
+            const cards = document.querySelectorAll('.sword-card');
+            cards.forEach(card => {
+                if (type === 'all' || card.getAttribute('data-type') === type) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

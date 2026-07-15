@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор Трейдов — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
+    <title>🧮 Калькулятор Трейдов — База Знаний Blox Fruits</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        body { background: #0c0c0c; color: #fff; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
         nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
-        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
-        h1 { color: #ff4500; }
-        .trade-calculator { background: #141414; padding: 25px; border-radius: 12px; border: 2px solid #252525; max-width: 600px; margin: 30px auto; box-shadow: 0 8px 25px rgba(0,0,0,0.8); }
-        .trade-grid { display: flex; justify-content: space-around; gap: 20px; margin-bottom: 25px; }
-        .trade-column { flex: 1; background: #1c1c1c; padding: 15px; border-radius: 8px; border: 1px solid #2d2d2d; }
-        h3 { color: #aaa; margin-top: 0; }
-        select { width: 100%; padding: 12px; background: #2a2a2a; color: #fff; border: 1px solid #444; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; }
-        select:focus { border-color: #ff4500; outline: none; }
-        .result-box { padding: 20px; border-radius: 8px; font-size: 18px; font-weight: bold; background: #222; border: 1px solid #333; margin-top: 15px; transition: all 0.3s ease; }
-        .win { background: #1b5e20; color: #a5d6a7; border-color: #2e7d32; }
-        .lose { background: #b71c1c; color: #ef9a9a; border-color: #c62828; }
-        .equal { background: #0d47a1; color: #90caf9; border-color: #1565c0; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 25px; }
+
+        .trade-container { display: flex; max-width: 1200px; margin: 0 auto; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .trade-side { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 45%; min-width: 320px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .trade-side h2 { margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 10px; font-size: 20px; }
+        .my-side h2 { color: #3498db; }
+        .their-side h2 { color: #e74c3c; }
+
+        .fruit-select { width: 100%; background: #1c1c1c; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 6px; font-size: 14px; margin-bottom: 15px; cursor: pointer; }
+        .selected-list { min-height: 180px; background: #0f0f0f; border: 1px solid #222; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .selected-item { display: flex; justify-content: space-between; align-items: center; background: #181818; padding: 8px 12px; border-radius: 6px; border-left: 4px solid #555; }
+        .remove-btn { background: none; border: none; color: #ff4d4d; font-weight: bold; cursor: pointer; font-size: 16px; margin-left: 10px; }
+
+        .total-box { margin-top: 15px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; }
+        .total-val { color: #2ecc71; }
+
+        .result-panel { max-width: 960px; margin: 30px auto 0 auto; background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.7); }
+        .verdict-text { font-size: 24px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0; }
+        .win { color: #2ecc71; text-shadow: 0 0 10px #2ecc71; }
+        .loss { color: #e74c3c; text-shadow: 0 0 10px #e74c3c; }
+        .fair { color: #f1c40f; text-shadow: 0 0 10px #f1c40f; }
+        .difference { color: #aaa; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -40,67 +51,215 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🧮 Калькулятор Трейдов</h1>
-    <p>Проверь ценность фруктов перед обменом, чтобы тебя не обманули!</p>
+    <h1>🧮 Умный Калькулятор Трейдов Blox Fruits</h1>
+    <p class="subtitle">Добавь свои фрукты и фрукты второго игрока, чтобы узнать выгоду сделки.</p>
 
-    <div class="trade-calculator">
-        <div class="trade-grid">
-            <div class="trade-column">
-                <h3>Ты отдаешь:</h3>
-                <select id="my-fruit" onchange="calculateTrade()">
-                    <option value="0">Выбери фрукт...</option>
-                    <option value="115000000">Kitsune (115M Value)</option>
-                    <option value="90000000">Dragon (90M Value)</option>
-                    <option value="40000000">Leopard (40M Value)</option>
-                    <option value="25000000">Dough (25M Value)</option>
-                    <option value="7000000">Buddha (7M Value)</option>
-                    <option value="5000">Rocket (5k Value)</option>
-                </select>
-            </div>
-
-            <div class="trade-column">
-                <h3>Тебе дают:</h3>
-                <select id="their-fruit" onchange="calculateTrade()">
-                    <option value="0">Выбери фрукт...</option>
-                    <option value="115000000">Kitsune (115M Value)</option>
-                    <option value="90000000">Dragon (90M Value)</option>
-                    <option value="40000000">Leopard (40M Value)</option>
-                    <option value="25000000">Dough (25M Value)</option>
-                    <option value="7000000">Buddha (7M Value)</option>
-                    <option value="5000">Rocket (5k Value)</option>
-                </select>
+    <div class="trade-container">
+        <div class="trade-side my-side">
+            <h2>Твои фрукты (Ты отдаешь)</h2>
+            <select class="fruit-select" id="my-select" onchange="addFruit('my')">
+                <option value="" disabled selected>+ Выбери фрукт...</option>
+            </select>
+            <div class="selected-list" id="my-list"></div>
+            <div class="total-box">
+                <span>Общая ценность:</span>
+                <span class="total-val" id="my-total">0</span>
             </div>
         </div>
 
-        <div id="trade-result" class="result-box">Укажи фрукты, чтобы оценить сделку</div>
+        <div class="trade-side their-side">
+            <h2>Фрукты игрока (Ты получаешь)</h2>
+            <select class="fruit-select" id="their-select" onchange="addFruit('their')">
+                <option value="" disabled selected>+ Выбери фрукт...</option>
+            </select>
+            <div class="selected-list" id="their-list"></div>
+            <div class="total-box">
+                <span>Общая ценность:</span>
+                <span class="total-val" id="their-total">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-panel">
+        <h3>Анализ предложения:</h3>
+        <div class="verdict-text fair" id="trade-verdict">Ожидание предметов...</div>
+        <div class="difference" id="trade-diff">Разница в стоимости: 0%</div>
     </div>
 
     <script>
-    function calculateTrade() {
-        const myValue = parseInt(document.getElementById('my-fruit').value);
-        const theirValue = parseInt(document.getElementById('their-fruit').value);
-        const resultDiv = document.getElementById('trade-result');
+        const fruitsData = [
+            // МИФИЧЕСКИЕ
+            { name: "🦊 Kitsune", value: 115000000, color: "#bf00ff" },
+            { name: "🐉 Dragon", value: 110000000, color: "#bf00ff" },
+            { name: "🐆 Leopard", value: 40000000, color: "#bf00ff" },
+            { name: "🍩 Dough", value: 20000000, color: "#bf00ff" },
+            { name: "🦖 T-Rex", value: 20000000, color: "#bf00ff" },
+            { name: "🦖 Mammoth", value: 12500000, color: "#bf00ff" },
+            { name: "👻 Spirit", value: 10000000, color: "#bf00ff" },
+            { name: "🐍 Venom", value: 9000000, color: "#bf00ff" },
+            { name: "🌀 Control", value: 8000000, color: "#bf00ff" },
+            { name: "🌑 Shadow", value: 6000000, color: "#bf00ff" },
+            { name: "❄️ Blizzard", value: 5000000, color: "#bf00ff" },
+            { name: "🦅 Phoenix", value: 4000000, color: "#bf00ff" },
+            { name: " Gravity", value: 2500000, color: "#bf00ff" },
+            
+            // ЛЕГЕНДАРНЫЕ
+            { name: "🧲 Buddha", value: 7000000, color: "#d4af37" },
+            { name: "⚡ Portal", value: 6000000, color: "#d4af37" },
+            { name: "⚡ Rumble", value: 5000000, color: "#d4af37" },
+            { name: "🔊 Sound", value: 4000000, color: "#d4af37" },
+            { name: "🌋 Magma (V2)", value: 2000000, color: "#d4af37" },
+            { name: "🕸️ Spider", value: 2000000, color: "#d4af37" },
+            { name: "🟢 Pain", value: 2000000, color: "#d4af37" },
+            { name: "⚡ Light (V2)", value: 1800000, color: "#d4af37" },
+            { name: "❄️ Ice (V2)", value: 1500000, color: "#d4af37" },
+            { name: "🪨 Quake", value: 1500000, color: "#d4af37" },
+            { name: "💖 Love", value: 1500000, color: "#d4af37" },
 
-        if (myValue === 0 || theirValue === 0) {
-            resultDiv.innerHTML = "Укажи фрукты в обоих полях!";
-            resultDiv.className = "result-box";
-            return;
+            // РЕДКИЕ
+            { name: "👻 Ghost", value: 300000, color: "#1e90ff" },
+            { name: "🧱 Barrier", value: 200000, color: "#1e90ff" },
+            { name: "💎 Diamond", value: 250000, color: "#1e90ff" },
+            { name: "🌱 Sand", value: 400000, color: "#1e90ff" },
+            { name: "⚔️ Chop", value: 150000, color: "#1e90ff" },
+            { name: "🕶️ Dark", value: 500000, color: "#1e90ff" },
+            { name: "🪶 Falcon", value: 100000, color: "#1e90ff" },
+            { name: "🔥 Fire", value: 600000, color: "#1e90ff" },
+            { name: "🌱 Light (Обычный)", value: 250000, color: "#1e90ff" },
+            { name: "🌱 Rubber", value: 750000, color: "#1e90ff" },
+
+            // НЕОБЫЧНЫЕ И ОБЫЧНЫЕ
+            { name: "💨 Smoke", value: 80000, color: "#2b752b" },
+            { name: "🔥 Flame", value: 120000, color: "#2b752b" },
+            { name: "❄️ Ice (Обычный)", value: 100000, color: "#2b752b" },
+            { name: "🎯 Spike", value: 40000, color: "#2b752b" },
+            { name: "🚀 Rocket", value: 5000, color: "#555" },
+            { name: "🔄 Spin", value: 7000, color: "#555" },
+            { name: "🔪 Spring", value: 10000, color: "#555" },
+            { name: "💣 Bomb", value: 15000, color: "#555" }
+        ];
+
+        function initSelects() {
+            const mySelect = document.getElementById('my-select');
+            const theirSelect = document.getElementById('their-select');
+            
+            fruitsData.forEach((fruit, index) => {
+                const opt1 = document.createElement('option');
+                opt1.value = index;
+                opt1.textContent = `${fruit.name} (${fruit.value.toLocaleString()} 💰)`;
+                mySelect.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = index;
+                opt2.textContent = `${fruit.name} (${fruit.value.toLocaleString()} 💰)`;
+                theirSelect.appendChild(opt2);
+            });
         }
 
-        if (myValue === theirValue) {
-            resultDiv.innerHTML = "⚖️ Абсолютно честный обмен! Ценность одинаковая.";
-            resultDiv.className = "result-box equal";
-        } else if (myValue > theirValue) {
-            let diff = (myValue - theirValue) / 1000000;
-            resultDiv.innerHTML = `❌ Плохой трейд! Вы теряете около ${diff.toFixed(1)}M ценности.`;
-            resultDiv.className = "result-box lose";
-        } else {
-            let diff = (theirValue - myValue) / 1000000;
-            resultDiv.innerHTML = `✅ Отличный трейд! Вы в плюсе на +${diff.toFixed(1)}M ценности.`;
-            resultDiv.className = "result-box win";
+        let myActiveFruits = [];
+        let theirActiveFruits = [];
+
+        function addFruit(side) {
+            const select = document.getElementById(`${side}-select`);
+            const fruitIndex = select.value;
+            if (fruitIndex === "" || fruitIndex === null) return;
+
+            const fruit = fruitsData[fruitIndex];
+            
+            if (side === 'my') {
+                if (myActiveFruits.length >= 4) { 
+                    alert("Нельзя добавить больше 4 фруктов в один трейд!"); 
+                    select.value = ""; 
+                    return; 
+                }
+                myActiveFruits.push(fruit);
+            } else {
+                if (theirActiveFruits.length >= 4) { 
+                    alert("Нельзя добавить больше 4 фруктов в один трейд!"); 
+                    select.value = ""; 
+                    return; 
+                }
+                theirActiveFruits.push(fruit);
+            }
+
+            select.value = "";
+            updateUI();
         }
-    }
+
+        function removeFruit(side, index) {
+            if (side === 'my') {
+                myActiveFruits.splice(index, 1);
+            } else {
+                theirActiveFruits.splice(index, 1);
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            const myListHTML = document.getElementById('my-list');
+            const theirListHTML = document.getElementById('their-list');
+            
+            myListHTML.innerHTML = "";
+            theirListHTML.innerHTML = "";
+
+            let myTotal = 0;
+            let theirTotal = 0;
+
+            myActiveFruits.forEach((fruit, idx) => {
+                myTotal += fruit.value;
+                myListHTML.innerHTML += `
+                    <div class="selected-item" style="border-left: 4px solid ${fruit.color};">
+                        <span>${fruit.name}</span>
+                        <span>${fruit.value.toLocaleString()} 💰 <button class="remove-btn" onclick="removeFruit('my', ${idx})">×</button></span>
+                    </div>`;
+            });
+
+            theirActiveFruits.forEach((fruit, idx) => {
+                theirTotal += fruit.value;
+                theirListHTML.innerHTML += `
+                    <div class="selected-item" style="border-left: 4px solid ${fruit.color};">
+                        <span>${fruit.name}</span>
+                        <span>${fruit.value.toLocaleString()} 💰 <button class="remove-btn" onclick="removeFruit('their', ${idx})">×</button></span>
+                    </div>`;
+            });
+
+            document.getElementById('my-total').textContent = myTotal.toLocaleString();
+            document.getElementById('their-total').textContent = theirTotal.toLocaleString();
+
+            const verdict = document.getElementById('trade-verdict');
+            const diffText = document.getElementById('trade-diff');
+
+            if (myTotal === 0 && theirTotal === 0) {
+                verdict.textContent = "Ожидание предметов...";
+                verdict.className = "verdict-text fair";
+                diffText.textContent = "Разница в стоимости: 0%";
+                return;
+            }
+
+            if (myTotal === 0 && theirTotal > 0) {
+                verdict.textContent = "🔥 Абсолютная Имба (W)";
+                verdict.className = "verdict-text win";
+                diffText.textContent = "Ты получаешь фрукты бесплатно!";
+                return;
+            }
+
+            const diffPercent = ((theirTotal - myTotal) / myTotal) * 100;
+            diffText.textContent = `Разница стоимости на рынке: ${diffPercent > 0 ? '+' : ''}${diffPercent.toFixed(1)}%`;
+
+            if (diffPercent > 10) {
+                verdict.textContent = "🟢 Выгодный Трейд (Win)";
+                verdict.className = "verdict-text win";
+            } else if (diffPercent < -10) {
+                verdict.textContent = "🔴 Убыточный Трейд (Loss)";
+                verdict.className = "verdict-text loss";
+            } else {
+                verdict.textContent = "🟡 Честный Обмен (Fair)";
+                verdict.className = "verdict-text fair";
+            }
+        }
+
+        window.onload = initSelects;
     </script>
-
 </body>
 </html>
+         

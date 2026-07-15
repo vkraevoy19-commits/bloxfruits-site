@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тир-Лист Фруктов — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
+    <title>🔥 Тир-Лист Фруктов — База Знаний Blox Fruits</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        body { background: #0c0c0c; color: #fff; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
         nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
-        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
-        h1 { color: #ff4500; }
-        .tier-list { display: flex; flex-direction: column; gap: 8px; max-width: 800px; margin: 20px auto; background: #1b1b1b; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .tier-row { display: flex; background: #141414; border: 1px solid #252525; border-radius: 6px; overflow: hidden; align-items: center; min-height: 70px; }
-        .tier-letter { width: 80px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #000; min-height: 70px; }
-        .s-tier { background: #ff7f7f; }
-        .a-tier { background: #ffbf7f; }
-        .b-tier { background: #ffdf7f; }
-        .c-tier { background: #ffff7f; }
-        .tier-content { padding: 15px; text-align: left; font-size: 16px; color: #eee; font-weight: 500; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 30px; }
+        
+        /* Таблица Тир-Листа */
+        .tier-table { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .tier-row { display: flex; background: #141414; border: 1px solid #222; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        
+        /* Левая колонка с буквой тира */
+        .tier-letter { width: 100px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #000; text-shadow: 0 1px 2px rgba(0,0,0,0.5); min-height: 80px; }
+        .tier-s-plus { background: #ff3333; }
+        .tier-s { background: #ff7f00; }
+        .tier-a { background: #ffd700; }
+        .tier-b { background: #00ff00; }
+        .tier-c { background: #00ffff; }
+        
+        /* Правая колонка с фруктами */
+        .tier-content { flex: 1; padding: 15px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start; background: #111; }
+        
+        /* Плашка фрукта */
+        .fruit-badge { background: #1c1c1c; border: 1px solid #333; padding: 6px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 500; color: #eee; cursor: help; transition: 0.2s; position: relative; }
+        .fruit-badge:hover { border-color: #ff4500; color: #fff; background: #22110c; transform: translateY(-2px); }
+        
+        /* Подсказки при наведении (типы фруктов) */
+        .mythical-f { border-left: 3px solid #bf00ff; }
+        .legendary-f { border-left: 3px solid #d4af37; }
+        .rare-f { border-left: 3px solid #1e90ff; }
+        .uncommon-f { border-left: 3px solid #2b752b; }
+        .common-f { border-left: 3px solid #555; }
     </style>
 </head>
 <body>
@@ -38,26 +56,85 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🔥 Актуальный Тир-Лист Фруктов</h1>
-    <p>Рейтинг дьявольских плодов по их полезности для PvP, Фарма уровней и Рейдов.</p>
+    <h1>🔥 Главный Тир-Лист Фруктов</h1>
+    <p class="subtitle">Актуальный рейтинг всех фруктов для ПВП, Фарма и Рейдов (цвет полоски слева показывает редкость).</p>
 
-    <div class="tier-list">
+    <div class="tier-table">
+        
+        <!-- TIER S+ -->
         <div class="tier-row">
-            <div class="tier-letter s-tier">S</div>
-            <div class="tier-content">Kitsune, Dragon, Leopard, Dough, Blizzard (Абсолютная имба для любых задач)</div>
+            <div class="tier-letter tier-s-plus">S+</div>
+            <div class="tier-content">
+                <div class="fruit-badge mythical-f" title="Мифический | Король ПВП и Трейдов">🦊 Kitsune (Кицунэ)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Лучший для ПВП комбо и спама">🐉 Dragon (Дракон)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Безумный урон и зачистка">🐆 Leopard (Леопард)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Абсолютный топ-1 для фарма и рейдов">🧲 Buddha (Будда)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Имба для ваншот комбо">🍩 Dough (Тесто)</div>
+            </div>
         </div>
+
+        <!-- TIER S -->
         <div class="tier-row">
-            <div class="tier-letter a-tier">A</div>
-            <div class="tier-content">Buddha (Лучший для фарма во 2 и 3 море!), Portal, Rumble, Magma, T-Rex</div>
+            <div class="tier-letter tier-s">S</div>
+            <div class="tier-content">
+                <div class="fruit-badge mythical-f" title="Мифический | Топовый фарм и ПВП">🦖 T-Rex (Тирекс)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Огромная скорость и ПВП потенциал">🌀 Portal (Портал)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Жесткий яд и спам скиллами">🐍 Venom (Веном)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Отличный контроль и урон">❄️ Blizzard (Близзард)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Огромный спам-урон">👻 Spirit (Спирит)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Сильный массовый урон">🌋 Magma (Магма / V2)</div>
+            </div>
         </div>
+
+        <!-- TIER A -->
         <div class="tier-row">
-            <div class="tier-letter b-tier">B</div>
-            <div class="tier-content">Light (Идеален для 1 моря), Ice, Dark, Phoenix, Sound, Venom</div>
+            <div class="tier-letter tier-a">A</div>
+            <div class="tier-content">
+                <div class="fruit-badge mythical-f" title="Мифический | Мощная ульта, но тяжело попасть">🦅 Phoenix (Феникс)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Дорогой, но средний в ПВП">🌑 Shadow (Шедоу)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Классика для старта и ПВП">⚡ Light (Свет / V2)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Хороший стан и заморозка">❄️ Ice (Лед / V2)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Много кнопок контроля"> rumble (Рамбл)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Хороший урон по площади">🔊 Sound (Звук)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Сильные комбо">🕸️ Spider (Спайдер)</div>
+                <div class="fruit-badge mythical-f" title="Мифический | Требует огромного скилла">🌀 Control (Контроль)</div>
+            </div>
         </div>
+
+        <!-- TIER B -->
         <div class="tier-row">
-            <div class="tier-letter c-tier">C</div>
-            <div class="tier-content">Rubber, Ghost, Diamond, Barrier, Love, Quake</div>
+            <div class="tier-letter tier-b">B</div>
+            <div class="tier-content">
+                <div class="fruit-badge legendary-f" title="Легендарный | Средний урон и фарм">🦖 Mammoth (Мамонт)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Хорошие ПВП комбо">🔥 Fire (Огонь)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Медленный, но сильный урон">🪨 Quake (Квейк)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Полный иммунитет к мечам — супер для 1 моря">⚔️ Chop (Чоп)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Тьма, неплохой контроль">🕶️ Dark (Тьма)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Притягивание и щиты">🧱 Barrier (Барьер)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Окаменение врагов">💖 Love (Лав)</div>
+                <div class="fruit-badge rare-f" title="Редкий | Превращение в алмаз">💎 Diamond (Алмаз)</div>
+                <div class="fruit-badge legendary-f" title="Легендарный | Защитные барьеры">🟢 Portal (Барлоу / Барт)</div>
+            </div>
         </div>
+
+        <!-- TIER C/F -->
+        <div class="tier-row">
+            <div class="tier-letter tier-c">C/F</div>
+            <div class="tier-content">
+                <div class="fruit-badge rare-f" title="Редкий">👻 Ghost (Призрак)</div>
+                <div class="fruit-badge rare-f" title="Редкий">🪶 Falcon (Сокол)</div>
+                <div class="fruit-badge uncommon-f" title="Необычный">🌱 Sand (Песок)</div>
+                <div class="fruit-badge uncommon-f" title="Необычный">🌀 Rubber (Резина)</div>
+                <div class="fruit-badge uncommon-f" title="Необычный">💨 Smoke (Дым)</div>
+                <div class="fruit-badge uncommon-f" title="Необычный">🎯 Spike (Шипы)</div>
+                <div class="fruit-badge uncommon-f" title="Необычный">🔥 Flame (Огонь начальный)</div>
+                <div class="fruit-badge common-f" title="Обычный">🚀 Rocket (Ракета)</div>
+                <div class="fruit-badge common-f" title="Обычный">🔄 Spin (Вращение)</div>
+                <div class="fruit-badge common-f" title="Обычный">🔪 Spring (Пружина)</div>
+                <div class="fruit-badge common-f" title="Обычный">💣 Bomb (Бомба)</div>
+            </div>
+        </div>
+
     </div>
 
 </body>
