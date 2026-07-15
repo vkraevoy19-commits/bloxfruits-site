@@ -17,27 +17,40 @@
         .tier-table { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         .tier-row { display: flex; background: #141414; border: 1px solid #222; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         
-        /* Левая колонка с буквой тира */
-        .tier-letter { width: 100px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #000; text-shadow: 0 1px 2px rgba(0,0,0,0.5); min-height: 80px; }
+        .tier-letter { width: 100px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #000; min-height: 80px; }
         .tier-s-plus { background: #ff3333; }
         .tier-s { background: #ff7f00; }
         .tier-a { background: #ffd700; }
         .tier-b { background: #00ff00; }
         .tier-c { background: #00ffff; }
         
-        /* Правая колонка с фруктами */
         .tier-content { flex: 1; padding: 15px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start; background: #111; }
         
         /* Плашка фрукта */
-        .fruit-badge { background: #1c1c1c; border: 1px solid #333; padding: 6px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 500; color: #eee; cursor: help; transition: 0.2s; position: relative; }
-        .fruit-badge:hover { border-color: #ff4500; color: #fff; background: #22110c; transform: translateY(-2px); }
+        .fruit-badge { background: #1c1c1c; border: 1px solid #333; padding: 8px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 500; color: #eee; cursor: pointer; transition: 0.2s; position: relative; }
+        .fruit-badge:hover { border-color: #ff4500; color: #fff; background: #22110c; transform: translateY(-2px); box-shadow: 0 0 8px rgba(255, 69, 0, 0.4); }
         
-        /* Подсказки при наведении (типы фруктов) */
+        /* Цвета редкости слева */
         .mythical-f { border-left: 3px solid #bf00ff; }
         .legendary-f { border-left: 3px solid #d4af37; }
         .rare-f { border-left: 3px solid #1e90ff; }
         .uncommon-f { border-left: 3px solid #2b752b; }
         .common-f { border-left: 3px solid #555; }
+
+        /* Всплывающее окно (Поп-ап) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .modal-card { background: #141414; border: 2px solid #ff4500; border-radius: 12px; padding: 25px; max-width: 450px; width: 90%; text-align: left; box-shadow: 0 0 25px rgba(255, 69, 0, 0.4); transform: scale(0.8); transition: transform 0.3s ease; position: relative; }
+        .modal-overlay.active .modal-card { transform: scale(1); }
+        
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #666; font-size: 22px; cursor: pointer; transition: 0.2s; }
+        .modal-close:hover { color: #ff4500; }
+        
+        .modal-title { font-size: 24px; color: #ff4500; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .modal-rarity { display: inline-block; font-size: 11px; font-weight: bold; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 15px; }
+        .modal-text { font-size: 14px; line-height: 1.6; color: #ccc; margin: 10px 0; }
+        .modal-text strong { color: #fff; }
     </style>
 </head>
 <body>
@@ -56,20 +69,19 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🔥 Главный Тир-Лист Фруктов</h1>
-    <p class="subtitle">Актуальный рейтинг всех фруктов для ПВП, Фарма и Рейдов (цвет полоски слева показывает редкость).</p>
+    <h1>🔥 Интерактивный Энциклопедический Тир-Лист</h1>
+    <p class="subtitle">Кликни на абсолютно любой фрукт, чтобы прочитать его описание, узнать цену и фишки!</p>
 
     <div class="tier-table">
-        
         <!-- TIER S+ -->
         <div class="tier-row">
             <div class="tier-letter tier-s-plus">S+</div>
             <div class="tier-content">
-                <div class="fruit-badge mythical-f" title="Мифический | Король ПВП и Трейдов">🦊 Kitsune (Кицунэ)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Лучший для ПВП комбо и спама">🐉 Dragon (Дракон)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Безумный урон и зачистка">🐆 Leopard (Леопард)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Абсолютный топ-1 для фарма и рейдов">🧲 Buddha (Будда)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Имба для ваншот комбо">🍩 Dough (Тесто)</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('kitsune')">🦊 Kitsune</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('dragon')">🐉 Dragon</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('leopard')">🐆 Leopard</div>
+                <div class="fruit-badge rare-f" onclick="showFruit('buddha')">🧲 Buddha</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('dough')">🍩 Dough</div>
             </div>
         </div>
 
@@ -77,27 +89,26 @@
         <div class="tier-row">
             <div class="tier-letter tier-s">S</div>
             <div class="tier-content">
-                <div class="fruit-badge mythical-f" title="Мифический | Топовый фарм и ПВП">🦖 T-Rex (Тирекс)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Огромная скорость и ПВП потенциал">🌀 Portal (Портал)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Жесткий яд и спам скиллами">🐍 Venom (Веном)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Отличный контроль и урон">❄️ Blizzard (Близзард)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Огромный спам-урон">👻 Spirit (Спирит)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Сильный массовый урон">🌋 Magma (Магма / V2)</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('trex')">🦖 T-Rex</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('portal')">🌀 Portal</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('venom')">🐍 Venom</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('spirit')">👻 Spirit</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('blizzard')">❄️ Blizzard</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('magma')">🌋 Magma</div>
             </div>
         </div>
-
         <!-- TIER A -->
         <div class="tier-row">
             <div class="tier-letter tier-a">A</div>
             <div class="tier-content">
-                <div class="fruit-badge mythical-f" title="Мифический | Мощная ульта, но тяжело попасть">🦅 Phoenix (Феникс)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Дорогой, но средний в ПВП">🌑 Shadow (Шедоу)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Классика для старта и ПВП">⚡ Light (Свет / V2)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Хороший стан и заморозка">❄️ Ice (Лед / V2)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Много кнопок контроля"> rumble (Рамбл)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Хороший урон по площади">🔊 Sound (Звук)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Сильные комбо">🕸️ Spider (Спайдер)</div>
-                <div class="fruit-badge mythical-f" title="Мифический | Требует огромного скилла">🌀 Control (Контроль)</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('mammoth')">🦣 Mammoth</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('shadow')">🌑 Shadow</div>
+                <div class="fruit-badge mythical-f" onclick="showFruit('control')">🌀 Control</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('rumble')">⚡ Rumble</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('sound')">🔊 Sound</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('phoenix')">🦅 Phoenix</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('light')">⚡ Light</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('ice')">❄️ Ice</div>
             </div>
         </div>
 
@@ -105,15 +116,12 @@
         <div class="tier-row">
             <div class="tier-letter tier-b">B</div>
             <div class="tier-content">
-                <div class="fruit-badge legendary-f" title="Легендарный | Средний урон и фарм">🦖 Mammoth (Мамонт)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Хорошие ПВП комбо">🔥 Fire (Огонь)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Медленный, но сильный урон">🪨 Quake (Квейк)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Полный иммунитет к мечам — супер для 1 моря">⚔️ Chop (Чоп)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Тьма, неплохой контроль">🕶️ Dark (Тьма)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Притягивание и щиты">🧱 Barrier (Барьер)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Окаменение врагов">💖 Love (Лав)</div>
-                <div class="fruit-badge rare-f" title="Редкий | Превращение в алмаз">💎 Diamond (Алмаз)</div>
-                <div class="fruit-badge legendary-f" title="Легендарный | Защитные барьеры">🟢 Portal (Барлоу / Барт)</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('spider')">🕸️ Spider</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('love')">💖 Love</div>
+                <div class="fruit-badge legendary-f" onclick="showFruit('quake')">🪨 Quake</div>
+                <div class="fruit-badge rare-f" onclick="showFruit('dark')">🕶️ Dark</div>
+                <div class="fruit-badge rare-f" onclick="showFruit('chop')">⚔️ Chop</div>
+                <div class="fruit-badge rare-f" onclick="showFruit('barrier')">🧱 Barrier</div>
             </div>
         </div>
 
@@ -121,21 +129,297 @@
         <div class="tier-row">
             <div class="tier-letter tier-c">C/F</div>
             <div class="tier-content">
-                <div class="fruit-badge rare-f" title="Редкий">👻 Ghost (Призрак)</div>
-                <div class="fruit-badge rare-f" title="Редкий">🪶 Falcon (Сокол)</div>
-                <div class="fruit-badge uncommon-f" title="Необычный">🌱 Sand (Песок)</div>
-                <div class="fruit-badge uncommon-f" title="Необычный">🌀 Rubber (Резина)</div>
-                <div class="fruit-badge uncommon-f" title="Необычный">💨 Smoke (Дым)</div>
-                <div class="fruit-badge uncommon-f" title="Необычный">🎯 Spike (Шипы)</div>
-                <div class="fruit-badge uncommon-f" title="Необычный">🔥 Flame (Огонь начальный)</div>
-                <div class="fruit-badge common-f" title="Обычный">🚀 Rocket (Ракета)</div>
-                <div class="fruit-badge common-f" title="Обычный">🔄 Spin (Вращение)</div>
-                <div class="fruit-badge common-f" title="Обычный">🔪 Spring (Пружина)</div>
-                <div class="fruit-badge common-f" title="Обычный">💣 Bomb (Бомба)</div>
+                <div class="fruit-badge uncommon-f" onclick="showFruit('sand')">🌱 Sand</div>
+                <div class="fruit-badge uncommon-f" onclick="showFruit('rubber')">🌀 Rubber</div>
+                <div class="fruit-badge uncommon-f" onclick="showFruit('smoke')">💨 Smoke</div>
+                <div class="fruit-badge common-f" onclick="showFruit('bomb')">💣 Bomb</div>
+                <div class="fruit-badge common-f" onclick="showFruit('rocket')">🚀 Rocket</div>
             </div>
         </div>
+    </div> <!-- Конец таблицы -->
 
+    <!-- ОКНО МОДАЛКИ (ПОП-АП) -->
+    <div class="modal-overlay" id="fruit-modal" onclick="closeModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="document.getElementById('fruit-modal').classList.remove('active')">×</button>
+            <h2 class="modal-title" id="m-name">Название фрукта</h2>
+            <div id="m-rarity" class="modal-rarity">Редкость</div>
+            <p class="modal-text"><strong>Цена у Дилера:</strong> <span id="m-price" style="color: #4caf50;">0</span></p>
+            <p class="modal-text"><strong>Для чего хорош:</strong> <span id="m-best">Загрузка...</span></p>
+            <p class="modal-text"><strong>Описание и фишки:</strong> <span id="m-desc">Загрузка...</span></p>
+        </div>
     </div>
 
+    <!-- ДАННЫЕ О ФРУКТАХ (ЧАСТЬ 3) -->
+    <script>
+        // Создаем глобальный объект базы знаний
+        const infoDatabase = {
+            kitsune: {
+                name: "🦊 Kitsune (Кицунэ)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "8,000,000 Бели / 4,000 Robux",
+                best: "ПВП, Скорость движения, Трейды",
+                desc: "Самый дорогой фрукт. При трансформации дает безумную скорость, из-за чего по вам практически невозможно попасть. Идеален для спама атак."
+            },
+            dragon: {
+                name: "🐉 Dragon (Дракон)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "Временно бесценен (Ожидает реворк)",
+                best: "ПВП, Массовые битвы, Спам урон",
+                desc: "Король ПВП. Обладает огромным встроенным снижением входящего урона и колоссальным радиусом атак в форме Дракона. Очень высоко ценится игроками."
+            },
+            leopard: {
+                name: "🐆 Leopard (Леопард)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "5,000,000 Бели",
+                best: "Быстрое ближнее ПВП, Комбо",
+                desc: "Фрукт для яростного ближнего боя. В форме зверя все атаки становятся невероятно быстрыми и автоматически ломают вражеский инстинкт."
+            },
+            buddha: {
+                name: "🧲 Buddha (Будда)",
+                rarity: "Редкий",
+                color: "#1e90ff",
+                price: "1,200,000 Бели",
+                best: "Абсолютный Топ-1 для Фарма, Рейды, Боссы",
+                desc: "Лучший фрукт для прокачки. Делает вас гигантом, увеличивает дальность ударов мечами или стилями боя и срезает 40% входящего урона на V2."
+            },
+            dough: {
+                name: "🍩 Dough (Тесто)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "2,800,000 Бели",
+                best: "Ваншот Комбо, Жесткий ПВП контроль",
+                desc: "После пробуждения (V2) становится грозой ПВП. Почти каждый скилл притягивает, оглушает и связывает врага, позволяя выдать смертельное комбо."
+            },
+            trex: {
+                name: "🦖 T-Rex (Тирекс)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "2,700,000 Бели",
+                best: "Фарм боссов, ПВП комбо",
+                desc: "Обладает мощной механикой хищных меток и постоянного пассивного урона (укус), который тикает и медленно сжигает здоровье врагов."
+            },
+            portal: {
+                name: "🌀 Portal (Портал)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "1,900,000 Бели",
+                best: "Телепортация, Охота за Bounty, ПВП",
+                desc: "Главный фрукт для быстрого перемещения. Позволяет мгновенно открывать порталы на любой остров и прятаться в невидимое карманное измерение."
+            },
+            venom: {
+                name: "🐍 Venom (Веном)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "3,000,000 Бели",
+                best: "Зачистка толп мобов, ПВП спам",
+                desc: "Создает токсичные ядовитые лужи. Враги, стоящие в них, стремительно теряют здоровье, даже если они заблокировали атаку волей."
+            },
+            spirit: {
+                name: "👻 Spirit (Спирит)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "3,400,000 Бели",
+                best: "ПВП, Призыв помощников, Огромный урон",
+                desc: "Позволяет собирать души духов (ангелов и демонов) прямо во время боя. Дает мощные баффы на хил, скорость или наносит массовый урон."
+            },
+            blizzard: {
+                name: "❄️ Blizzard (Близзард)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "2,400,000 Бели",
+                best: "Фарм Фабрики, Рейды, Зачистка зон",
+                desc: "Создает огромную снежную бурю, которая затягивает мобов в центр и наносит непрерывный урон. Идеально для массовых активностей."
+            },
+            magma: {
+                name: "🌋 Magma (Магма)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "850,000 Бели",
+                best: "Убийство Сибистов (Sea Beasts), Фарм денег",
+                desc: "Фрукт с самым высоким чистым уроном в игре. На V2 дает пассивную способность ходить по воде, не теряя ХП, что незаменимо в море."
+            },
+            mammoth: {
+                name: "🦣 Mammoth (Мамонт)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "2,700,000 Бели",
+                best: "Фарм, Танкование, Рейды",
+                desc: "Обладает огромной защитой. Его главная фишка — способность бесконечного тарана при зажатии одной кнопки, сносящая всё на пути."
+            },
+            shadow: {
+                name: "🌑 Shadow (Шедоу)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "2,900,000 Бели",
+                best: "ПВП комбо, Кража здоровья",
+                desc: "Накапливает шкалу Умбры. Имеет отличный вампиризм (восстанавливает вам ХП за счет урона врагам) и сильное ночное ПВП-оглушение."
+            },
+            control: {
+                name: "🌀 Control (Контроль)",
+                rarity: "Мифический",
+                color: "#bf00ff",
+                price: "3,200,000 Бели",
+                best: "ПВП развлечения, Броски зданий",
+                desc: "Создает огромную зону (Room), внутри которой вы можете телепортировать врагов, резать их корабли и швыряться кусками зданий."
+            },
+            rumble: {
+                name: "⚡ Rumble (Рамбл)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "2,100,000 Бели",
+                best: "ПВП комбо для Мечников, Стан",
+                desc: "Дает игроку 3 мгновенных рывка-телепорта. Огромные зоны поражения молниями идеально подходят для долгого оглушения целей."
+            },
+            sound: {
+                name: "🔊 Sound (Звук)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "1,900,000 Бели",
+                best: "Бафф тимейтов, Постоянный урон",
+                desc: "Генерирует звуковые волны и заполняет шкалу симфонии. Дает щиты и баффы на скорость для вас и всех союзников поблизости."
+            },
+            phoenix: {
+                name: "🦅 Phoenix (Феникс)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "1,800,000 Бели",
+                best: "Бесконечный Хил, Рейды",
+                desc: "Позволяет превращаться в синюю птицу. Обладает самым мощным регеном здоровья в игре, способным лечить даже ваших друзей."
+            },
+            light: {
+                name: "⚡ Light (Свет)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "650,000 Бели",
+                best: "Фарм в 1-м Море, Быстрый полет",
+                desc: "Лучший стартовый выбор. Дает встроенный световой меч для фарма мобов без использования энергии и самый быстрый полет в игре."
+            },
+            ice: {
+                name: "❄️ Ice (Лед)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "350,000 Бели",
+                best: "Заморозка, ПВП базы",
+                desc: "Замораживает воду под ногами, спасая от утопления. Скиллы намертво ступорят цель, давая идеальное время для атаки мечом."
+            },
+            spider: {
+                name: "🕸️ Spider (Спайдер)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "1,500,000 Бели",
+                best: "Снайперские ПВП атаки, Полет",
+                desc: "Бывший ник String. На V2 превращается в паутину с огромной дальностью захвата. Требует хорошего прицеливания, но бьет очень больно."
+            },
+            love: {
+                name: "💖 Love (Лав)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "1,300,000 Бели",
+                best: "Фарм на безопасной высоте, Полет",
+                desc: "Позволяет летать на огромном розовом фламинго и призывать NPC-помощника (лучшего друга), который отвлекает агрессию мобов на себя."
+            },
+            quake: {
+                name: "🪨 Quake (Квейк)",
+                rarity: "Легендарный",
+                color: "#d4af37",
+                price: "1,000,000 Бели",
+                best: "Разлом экрана, ПВП контроль",
+                desc: "Каждый скилл сотрясает воздух и создает мощные ударные волны. Обладает огромным отталкиванием врагов, сбивая им любые комбо."
+            },
+            dark: {
+                name: "🕶️ Dark (Тьма)",
+                rarity: "Редкий",
+                color: "#1e90ff",
+                price: "500,000 Бели",
+                best: "ПВП Оглушение, Комбо с мечами",
+                desc: "Используется ради огромной черной дыры (скилл на V2), которая стягивает всех противников в одну точку и надолго лишает их возможности двигаться."
+            },
+            chop: {
+                name: "⚔️ Chop (Чоп)",
+                rarity: "Редкий",
+                color: "#1e90ff",
+                price: "30,000 Бели",
+                best: "Контр-пик против Мечников в ПВП",
+                desc: "Имба против игроков с мечами. Дает вам полный пассивный иммунитет к любым разрезам и ударам клинков (CDK, TTK, Dark Blade вас не ранят)."
+            },
+            barrier: {
+                name: "🧱 Barrier (Барьер)",
+                rarity: "Редкий",
+                color: "#1e90ff",
+                price: "290,000 Бели",
+                best: "Троллинг, Блокировка проходов",
+                desc: "Позволяет спавнить стеклянные лестницы, барьеры и башни. Можно зажимать боссов в текстурах или закрывать проходы другим игрокам."
+            },
+            sand: {
+                name: "🌱 Sand (Песок)",
+                rarity: "Необычный",
+                color: "#2b752b",
+                price: "420,000 Бели",
+                best: "ПВП комбо на суше, оглушение",
+                desc: "Имеет очень долгое оглушение на кнопке пустынного урагана. Главный минус — вы получаете удвоенный урон, если стоите в воде."
+            },
+            rubber: {
+                name: "🌀 Rubber (Резина)",
+                rarity: "Необычный",
+                color: "#2b752b",
+                price: "250,000 Бели",
+                best: "Иммунитет к молниям (Рамблу)",
+                desc: "Фрукт Луффи из аниме. Полностью игнорирует любой урон электричеством, что делает вас неуязвимым к пушкам молний и фрукту Rumble."
+            },
+            smoke: {
+                name: "💨 Smoke (Дым)",
+                rarity: "Необычный",
+                color: "#2b752b",
+                price: "100,000 Бели",
+                best: "Дешевый фарм в 1-м Море, Полет с уроном",
+                desc: "Самый дешевый Логия-фрукт. Мобы низкого уровня не могут нанести вам урон обычными ударами. Имеет удобный и дешевый по энергии полет."
+            },
+            bomb: {
+                name: "💣 Bomb (Бомба)",
+                rarity: "Обычный",
+                color: "#555",
+                price: "85,000 Бели",
+                best: "Начальные взрывы, фарм толп мобов",
+                desc: "Позволяет взрывать самого себя или копить огромный ядерный взрыв. Наносит неплохой урон для своей копеечной цены на старте."
+            },
+            rocket: {
+                name: "🚀 Rocket (Ракета)",
+                rarity: "Обычный",
+                color: "#555",
+                price: "5,000 Бели",
+                best: "Самый первый старт, полет",
+                desc: "Заменил собой старый фрукт Kilo. Дает слабый урон и полет на ракете. Нужен только если вы только зашли в игру и у вас вообще ничего нет."
+            }
+        }; // База данных полностью закрыта без ошибок!
+
+        // Функция открытия модалки — СТРОГО СОВПАДАЕТ С КНОПКАМИ ONCLICK
+        function showFruit(id) {
+            const fruit = infoDatabase[id];
+            if (!fruit) return;
+
+            document.getElementById('m-name').textContent = fruit.name;
+            document.getElementById('m-price').textContent = fruit.price;
+            document.getElementById('m-best').textContent = fruit.best;
+            document.getElementById('m-desc').textContent = fruit.desc;
+            
+            const rarityBadge = document.getElementById('m-rarity');
+            rarityBadge.textContent = fruit.rarity;
+            rarityBadge.style.background = fruit.color;
+            rarityBadge.style.color = (fruit.color === "#d4af37") ? "#000" : "#fff"; 
+
+            document.getElementById('fruit-modal').classList.add('active');
+        }
+
+        // Функция закрытия при клике на темный фон вокруг карточки
+        function closeModal(event) {
+            if (event.target.id === 'fruit-modal') {
+                document.getElementById('fruit-modal').classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>

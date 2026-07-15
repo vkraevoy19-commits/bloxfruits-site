@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ваншот Комбо — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
+    <title>Билды персонажей — База Знаний Blox Fruits</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
         nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
         nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
         h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
-        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 30px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 30px; }
         
-        .combos-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1200px; margin: 0 auto; }
-        .combo-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 25px; width: 320px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
-        .combo-card:hover { border-color: #ff4500; transform: translateY(-5px); box-shadow: 0 12px 25px rgba(255, 69, 0, 0.2); }
+        /* Сетка билдов */
+        .builds-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .build-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 280px; text-align: left; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.7); transition: transform 0.2s, border-color 0.2s; }
+        .build-card:hover { transform: translateY(-3px); border-color: #ff4500; }
         
-        .combo-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; background: #ff4500; color: #fff; }
-        .difficulty-easy { background: #4caf50; }
-        .difficulty-medium { background: #ff9800; }
-        .difficulty-hard { background: #e91e63; box-shadow: 0 0 10px #e91e63; }
+        .build-tag { display: inline-block; background: #222; border: 1px solid #444; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #ff9800; margin-bottom: 12px; }
+        .sword-b .build-tag { color: #e74c3c; border-color: #e74c3c; }
+        .fruit-b .build-tag { color: #bf00ff; border-color: #bf00ff; }
+        .farm-b .build-tag { color: #2ecc71; border-color: #2ecc71; }
+        .hybrid-b .build-tag { color: #f1c40f; border-color: #f1c40f; }
+
+        h3 { color: #ff6347; margin: 0 0 10px 0; font-size: 19px; }
+        p { font-size: 13.5px; line-height: 1.5; color: #ccc; margin: 6px 0; }
+        strong { color: #fff; }
         
-        h3 { color: #fff; margin-top: 5px; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid #252525; padding-bottom: 10px; }
-        .build-info { font-size: 13px; color: #aaa; margin-bottom: 15px; line-height: 1.4; }
-        .build-info strong { color: #ff6347; }
+        .build-btn { width: 100%; background: #1c1c1c; border: 1px solid #444; color: #fff; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .build-btn:hover { background: #ff4500; color: #000; border-color: #ff4500; }
+
+        /* Всплывающее окно (Поп-ап статов) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
         
-        .sequence-title { font-size: 14px; font-weight: bold; color: #ff4500; margin-bottom: 8px; text-transform: uppercase; }
-        .combo-sequence { background: #1c1c1c; padding: 12px; border-radius: 8px; border: 1px solid #2d2d2d; font-family: 'Courier New', Courier, monospace; font-size: 14px; color: #00ff66; font-weight: bold; line-height: 1.6; }
+        .modal-card { background: #141414; border: 2px solid #ff4500; border-radius: 12px; padding: 25px; max-width: 480px; width: 90%; text-align: left; box-shadow: 0 0 25px rgba(255, 69, 0, 0.4); transform: scale(0.8); transition: transform 0.3s ease; position: relative; max-height: 85vh; overflow-y: auto; }
+        .modal-overlay.active .modal-card { transform: scale(1); }
         
-        .note { font-size: 13px; color: #999; margin-top: 15px; font-style: italic; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #666; font-size: 22px; cursor: pointer; transition: 0.2s; }
+        .modal-close:hover { color: #ff4500; }
+        
+        .modal-title { font-size: 22px; color: #ff4500; margin-top: 0; margin-bottom: 15px; }
+        .stat-line { background: #1c1c1c; padding: 6px 12px; border-radius: 6px; margin: 5px 0; font-size: 14px; border-left: 4px solid #555; display: flex; justify-content: space-between; }
+        .stat-line span { font-weight: bold; }
+        
+        .combo-box { background: #22110c; border: 1px dashed #ff4500; padding: 12px; border-radius: 6px; margin-top: 15px; }
+        .key-badge { background: #ff4500; color: #000; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-size: 12px; margin: 0 2px; display: inline-block; }
     </style>
 </head>
 <body>
@@ -44,65 +60,246 @@
         <a href="codes.html">Коды</a> | 
         <a href="locations.html">Локации</a> | 
         <a href="races.html">Расы</a> | 
-        <a href="builds.html">Билды</a> | 
-        <a href="combos.html" style="color:#fff;">Ваншот Комбо</a> | 
+        <a href="builds.html" style="color:#fff;">Билды</a> | 
+        <a href="combos.html">Ваншот Комбо</a> | 
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🩸 Топовые Ваншот Комбо для PvP</h1>
-    <p class="subtitle">Используй эти связки атак, чтобы стирать врагов за секунды и быстро фармить Баунти!</p>
+    <h1>⚔️ Ультимативные Билды Персонажей (С кнопками)</h1>
+    <p class="subtitle">Выбери свой класс. Внутри карточек тебя ждут точные характеристики и детальные ПВП/Фарм комбо ротации!</p>
 
-    <div class="combos-container">
-        
-        <!-- Комбо 1: Тестовое через Dough -->
-        <div class="combo-card">
-            <div class="combo-badge difficulty-easy">Легкое</div>
-            <h3>Классика Теста</h3>
-            <div class="build-info">
-                <strong>Фрукт:</strong> Dough (Пробужденный)<br>
-                <strong>Стиль:</strong> Godhuman<br>
-                <strong>Меч:</strong> Cursed Dual Katana (CDK)
-            </div>
-            <div class="sequence-title">Связка атак:</div>
-            <div class="combo-sequence">
-                Dough X ➔ Dough V ➔ Godhuman C ➔ CDK Z ➔ CDK X ➔ Godhuman Z
-            </div>
-            <p class="note">*Совет: Главное — попасть первым X движением Теста, чтобы обездвижить цель.</p>
+    <div class="builds-container">
+        <!-- БИЛД МЕЧНИКА -->
+        <div class="build-card sword-b">
+            <span class="build-tag">Sword Main</span>
+            <h3>⚔️ ПВП Мечник</h3>
+            <p><strong>Оружие:</strong> CDK, Shark Anchor, Yoru, Shisui</p>
+            <p><strong>Фрукты:</strong> Portal, Rumble, Ice V2, Dark V2</p>
+            <p><strong>Стиль боя:</strong> Godhuman, Dragon Talon</p>
+            <button class="build-btn" onclick="showBuild('sword')">Комбо и Статы</button>
         </div>
 
-        <!-- Комбо 2: Киберспортивное через Портал -->
-        <div class="combo-card">
-            <div class="combo-badge difficulty-medium">Среднее</div>
-            <h3>Тактика Портала</h3>
-            <div class="build-info">
-                <strong>Фрукт:</strong> Portal<br>
-                <strong>Стиль:</strong> Sanguine Art<br>
-                <strong>Меч:</strong> Shark Anchor (Акулий Якорь)
-            </div>
-            <div class="sequence-title">Связка атак:</div>
-            <div class="combo-sequence">
-                Portal Z ➔ Shark Anchor X ➔ Sanguine C ➔ Sanguine Z ➔ Shark Anchor Z
-            </div>
-            <p class="note">*Совет: После Portal Z сразу притягивай врага Якорем и не давай ему уйти в инстинкт.</p>
+        <!-- БИЛД ФРУКТОВИКА -->
+        <div class="build-card fruit-b">
+            <span class="build-tag">Fruit Main</span>
+            <h3>🍩 Безумный Спамер</h3>
+            <p><strong>Оружие:</strong> Koko, Buddy Sword, Canvander</p>
+            <p><strong>Фрукты:</strong> Dough V2, Kitsune, Leopard, T-Rex, Venom</p>
+            <p><strong>Ганн:</strong> Soul Guitar, Kabucha</p>
+            <button class="build-btn" onclick="showBuild('fruit')">Комбо и Статы</button>
         </div>
 
-        <!-- Комбо 3: Скилловое через Кицуне -->
-        <div class="combo-card">
-            <div class="combo-badge difficulty-hard">Сложное</div>
-            <h3>Гнев Кицуне</h3>
-            <div class="build-info">
-                <strong>Фрукт:</strong> Kitsune<br>
-                <strong>Стиль:</strong> Godhuman<br>
-                <strong>Меч:</strong> ТТК (True Triple Katana)
-            </div>
-            <div class="sequence-title">Связка атак:</div>
-            <div class="combo-sequence">
-                Kitsune C ➔ Kitsune Z ➔ Godhuman C ➔ TTK X ➔ TTK Z ➔ Godhuman X
-            </div>
-            <p class="note">*Совет: Требует идеального тайминга и низкого пинга, чтобы враг не успел прожать Flash Step.</p>
+        <!-- БИЛД ДЛЯ ФАРМА -->
+        <div class="build-card farm-b">
+            <span class="build-tag">Farm King</span>
+            <h3>🧲 Бог Фарма и Рейдов</h3>
+            <p><strong>Оружие:</strong> Shark Anchor, TTK, Bisento V2</p>
+            <p><strong>Фрукты:</strong> Buddha V2, Magma V2, Blizzard, Light V2</p>
+            <p><strong>Стиль боя:</strong> Sanguine Art, Sharkman Karate</p>
+            <button class="build-btn" onclick="showBuild('farm')">Комбо и Статы</button>
         </div>
 
+        <!-- ГИБРИДНЫЙ БИЛД -->
+        <div class="build-card hybrid-b">
+            <span class="build-tag">Hybrid</span>
+            <h3>⚡ Гибрид-Ваншот</h3>
+            <p><strong>Оружие:</strong> True Triple Katana, CDK, Spikey Trident</p>
+            <p><strong>Фрукты:</strong> T-Rex, Ice V2, Control, Shadow, Sound</p>
+            <p><strong>Ганн:</strong> Acidum Rifle, Serpent Bow</p>
+            <button class="build-btn" onclick="showBuild('hybrid')">Комбо и Статы</button>
+        </div>
+        <!-- БИЛД ВАНШОТ-ГИТАРИСТА -->
+        <div class="build-card hybrid-b">
+            <span class="build-tag">Gun Main</span>
+            <h3>🎸 Ваншот-Гитарист</h3>
+            <p><strong>Оружие:</strong> Soul Guitar, Kabucha</p>
+            <p><strong>Фрукт:</strong> Portal или Rumble (для стана)</p>
+            <p><strong>Стиль боя:</strong> Godhuman, Sanguine Art</p>
+            <button class="build-btn" onclick="showBuild('guitarist')">Комбо и Статы</button>
+        </div>
+
+        <!-- БИЛД ОХОТНИКА-ВАМПИРА -->
+        <div class="build-card sword-b">
+            <span class="build-tag">Ghoul Main</span>
+            <h3>🦇 Охотник-Вампир</h3>
+            <p><strong>Оружие:</strong> Hallow Scythe (Коса), Крюки</p>
+            <p><strong>Фрукт:</strong> Ghoul (Призрак) или Shadow</p>
+            <p><strong>Стиль боя:</strong> Sanguine Art</p>
+            <button class="build-btn" onclick="showBuild('vampire')">Комбо и Статы</button>
+        </div>
+
+        <!-- БИЛД ЭЛЕКТРИЧЕСКОГО БОГА -->
+        <div class="build-card fruit-b">
+            <span class="build-tag">Rumble Main</span>
+            <h3>⚡ Электрический Бог</h3>
+            <p><strong>Оружие:</strong> Cursed Dual Katana (CDK)</p>
+            <p><strong>Фрукт:</strong> Rumble V2 (Пробужденный)</p>
+            <p><strong>Стиль боя:</strong> Godhuman, Electric Claw</p>
+            <button class="build-btn" onclick="showBuild('electric')">Комбо и Статы</button>
+        </div>
+
+        <!-- БИЛД ЛИСЬЕГО ОХОТНИКА -->
+        <div class="build-card hybrid-b">
+            <span class="build-tag">Kitsune Main</span>
+            <h3>🦊 Лисий Охотник</h3>
+            <p><strong>Оружие:</strong> Fox Lamp (Лисья Лампа)</p>
+            <p><strong>Фрукт:</strong> Kitsune (Мифический)</p>
+            <p><strong>Стиль боя:</strong> Godhuman, Sanguine Art</p>
+            <button class="build-btn" onclick="showBuild('foxhunter')">Комбо и Статы</button>
+        </div>
+    </div> <!-- Конец сетки контейнера -->
+
+    <!-- ОКНО МОДАЛКИ (ИНФО О БИЛДЕ) -->
+    <div class="modal-overlay" id="build-modal" onclick="closeModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="document.getElementById('build-modal').classList.remove('active')">×</button>
+            <h2 class="modal-title" id="b-title">Название билда</h2>
+            
+            <p style="font-size: 14px; margin-bottom: 5px;"><strong>Распределение Статов (Max Level):</strong></p>
+            <div class="stat-line" style="border-left-color: #3498db;">Melee (Ближний бой) <span id="s-melee">0</span></div>
+            <div class="stat-line" style="border-left-color: #e74c3c;">Defense (Здоровье) <span id="s-def">0</span></div>
+            <div class="stat-line" style="border-left-color: #e67e22;">Sword (Мечи) <span id="s-sword">0</span></div>
+            <div class="stat-line" style="border-left-color: #2ecc71;">Gun (Огнестрел) <span id="s-gun">0</span></div>
+            <div class="stat-line" style="border-left-color: #9b59b6;">Blox Fruit (Фрукты) <span id="s-fruit">0</span></div>
+            
+            <p class="modal-text" style="margin-top: 15px;"><strong>Лучшая раса:</strong> <span id="b-race">Загрузка...</span></p>
+            <p class="modal-text"><strong>Лучший аксессуар:</strong> <span id="b-acc">Загрузка...</span></p>
+            
+            <div class="combo-box">
+                <p style="margin: 0 0 8px 0; font-size: 14px; color: #ff4500;"><strong>🔥 Главное ПВП/Фарм Комбо (Кнопки):</strong></p>
+                <div id="b-combo">Загрузка...</div>
+            </div>
+            
+            <p class="modal-text" style="margin-top: 15px;"><strong>Тактика боя:</strong> <span id="b-strat">Загрузка...</span></p>
+        </div>
     </div>
 
+    <!-- НАЧАЛО СКРИПТА -->
+    <script>
+        const buildsDatabase = {
+            sword: {
+                title: "⚔️ ПВП Мечник (Sword Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "MAX (2550)",
+                gun: "0",
+                fruit: "0",
+                race: "Mink V4 (скорость) или Cyborg V4",
+                acc: "Pale Scarf (Бледный шарф) или Valkyrie Helm",
+                combo: `<span class="key-badge">Portal Z</span> ➔ <span class="key-badge">Godhuman C</span> ➔ <span class="key-badge">Shark Anchor X</span> ➔ <span class="key-badge">Shark Anchor Z</span> ➔ <span class="key-badge">Godhuman Z</span>`,
+                strat: "Используй Portal Z для мгновенного телепорта прямо за спину врага. Сразу зажимай Godhuman C для подкидывания. Пока враг летит, активируй притяжение якоря Shark Anchor X, давай быстрый выпад Z и добивай быстрыми ударами в лицо."
+            },
+            fruit: {
+                title: "🍩 Безумный Спамер (Fruit Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "0",
+                gun: "0",
+                fruit: "MAX (2550)",
+                race: "Human V4 (урон берсерка) или Ghoul V4",
+                acc: "Swan Glasses (Очки Суона) или Holiday Cloak",
+                combo: `<span class="key-badge">Soul Guitar X</span> ➔ <span class="key-badge">Dough V2 X</span> ➔ <span class="key-badge">Dough V2 V</span> ➔ <span class="key-badge">Dough V2 C</span> ➔ <span class="key-badge">Godhuman Z</span>`,
+                strat: "Оглушай цель издалека с помощью Soul Guitar X (черная дыра). Когда враг застрял, хватай его тестом Dough X и сразу активируй ультимейт Dough V, который размажет цель о землю. В конце добивай кнопками стиля боя."
+            },
+            farm: {
+                title: "🧲 Бог Фарма и Рейдов (Buddha Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "MAX (2550)",
+                gun: "0",
+                fruit: "0",
+                race: "Shark V3/V4 (дает бессмертие в воде и щиты)",
+                acc: "Leviathan Shield, Lei (хил) или Ghoul Mask",
+                combo: `<span class="key-badge">Buddha Z (Трансформ)</span> ➔ <span class="key-badge">Зажать ЛКМ (Стиль Боя)</span> ➔ <span class="key-badge">Sanguine Art C (Хил)</span>`,
+                strat: "Здесь нет сложного комбо. Твоя задача — прожать форму гиганта на Buddha Z, взять в руки стиль боя Sanguine Art или Sharkman Karate и просто закликивать мобов. Если здоровье падает, используй Sanguine C, чтобы высосать жизни."
+            },
+            hybrid: {
+                title: "⚡ Гибрид-Ваншот (Hybrid Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "1275",
+                gun: "0",
+                fruit: "1275",
+                race: "Angel V4 (ради сильного пассивного стана и ауры)",
+                acc: "Zebra Cap или Hunter Cape",
+                combo: `<span class="key-badge">Ice V2 V</span> ➔ <span class="key-badge">Spikey Trident X</span> ➔ <span class="key-badge">TTK X</span> ➔ <span class="key-badge">Ice V2 C</span> ➔ <span class="key-badge">TTK Z</span>`,
+                strat: "Намертво примораживай цель к земле с помощью Ice V. Сразу притягивай её к себе через Spikey Trident X. Пока враг вплотную, выдавай сокрушительный вихрь TTK X, докидывай ледяной птицей Ice C и добивай финальным выпадом меча."
+            },
+            guitarist: {
+                title: "🎸 Ваншот-Гитарист (Gun Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "0",
+                gun: "MAX (2550)",
+                fruit: "0",
+                race: "Cyborg V4 (дает разрушительный урон цепной молнией по области)",
+                acc: "Zebra Cap (ускоряет перезарядку ганнов) или Bear Ears",
+                combo: `<span class="key-badge">Kabucha X</span> ➔ <span class="key-badge">Soul Guitar Z</span> ➔ <span class="key-badge">Soul Guitar X</span> ➔ <span class="key-badge">Godhuman C</span> ➔ <span class="key-badge">Godhuman Z</span>`,
+                strat: "Сначала сбивай волю (Instinct) врага быстрым выстрелом из Kabucha X. Мгновенно переключайся на Soul Guitar Z, чтобы нанести плотный урон, стягивай цель мощной черной дырой Soul Guitar X и завершай комбо тяжелыми апперкотами Godhuman C и Z."
+            },
+            vampire: {
+                title: "🦇 Охотник-Вампир (Ghoul / Sword Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "MAX (2550)",
+                gun: "0",
+                fruit: "0",
+                race: "Ghoul V4 (дает бешеную скорость ночью и огромный пассивный вампиризм)",
+                acc: "Ghoul Mask (Маска Гуля для отхила от атак) или Leviathan Shield",
+                combo: `<span class="key-badge">Sanguine Art Z</span> ➔ <span class="key-badge">Hallow Scythe Z</span> ➔ <span class="key-badge">Hallow Scythe X</span> ➔ <span class="key-badge">Sanguine Art C</span>`,
+                strat: "Атакуй врага издалека с помощью Sanguine Art Z, чтобы привязать его к себе. Притягивай цель косой Hallow Scythe Z, подкидывай её мощным круговым ударом X и сразу зажимай Sanguine Art C — это полностью высосет здоровье врага и восстановит твое ХП до максимума."
+            },
+            electric: {
+                title: "⚡ Электрический Бог (Rumble / Sword Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "MAX (2550)",
+                gun: "0",
+                fruit: "0",
+                race: "Angel V4 (ради сильного пассивного стана и ауры вокруг)",
+                acc: "Hunter Cape (Охотничий плащ) или Pale Scarf",
+                combo: `<span class="key-badge">Rumble V2 X</span> ➔ <span class="key-badge">Rumble V2 V</span> ➔ <span class="key-badge">CDK Z (Зажать)</span> ➔ <span class="key-badge">CDK X</span> ➔ <span class="key-badge">Godhuman Z</span>`,
+                strat: "Поймай цель в плотный стан с помощью грозового облака Rumble X, затем мгновенно активируй ультимейт Rumble V. Пока врага бьет током, зажимай выпад CDK Z, делай яростный крестовой разрез CDK X и мгновенно добивай ударом Godhuman Z."
+            },
+            foxhunter: {
+                title: "🦊 Лисий Охотник (Kitsune / Hybrid Main)",
+                melee: "MAX (2550)",
+                def: "MAX (2550)",
+                sword: "1275",
+                gun: "0",
+                fruit: "1275",
+                race: "Mink V4 (для максимальной скорости) или Cyborg V4",
+                acc: "Ribbon (Лента Кицунэ) или Swan Glasses",
+                combo: `<span class="key-badge">Kitsune C</span> ➔ <span class="key-badge">Fox Lamp X</span> ➔ <span class="key-badge">Fox Lamp Z</span> ➔ <span class="key-badge">Kitsune Z</span> ➔ <span class="key-badge">Godhuman C</span>`,
+                strat: "Оглушай и притягивай врага лисьим захватом Kitsune C. Сразу активируй Fox Lamp X, чтобы нанести быстрый урон по траектории, делай огненный выпад Fox Lamp Z, докидывай сферы Kitsune Z и завершай комбо мощным апперкотом Godhuman C."
+            }
+        }; // База данных успешно закрыта!
+
+        // Функция открытия поп-апа с заполнением данных
+        function showBuild(id) {
+            const build = buildsDatabase[id];
+            if (!build) return;
+
+            document.getElementById('b-title').textContent = build.title;
+            document.getElementById('s-melee').textContent = build.melee;
+            document.getElementById('s-def').textContent = build.def;
+            document.getElementById('s-sword').textContent = build.sword;
+            document.getElementById('s-gun').textContent = build.gun;
+            document.getElementById('s-fruit').textContent = build.fruit;
+            document.getElementById('b-race').textContent = build.race;
+            document.getElementById('b-acc').textContent = build.acc;
+            document.getElementById('b-combo').innerHTML = build.combo; // Рендерим HTML теги для кнопок-бейджей
+            document.getElementById('b-strat').textContent = build.strat;
+
+            document.getElementById('build-modal').classList.add('active');
+        }
+
+        // Функция закрытия при клике на темный фон вокруг карточки
+        function closeModal(event) {
+            if (event.target.id === 'build-modal') {
+                document.getElementById('build-modal').classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
