@@ -3,38 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все Фрукты — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
-    <style>
-        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
-        nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
-        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
-        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
-        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 40px; }
-        
-        .section-title { color: #fff; text-align: left; max-width: 1100px; margin: 30px auto 15px auto; font-size: 22px; border-left: 4px solid #ff4500; padding-left: 10px; }
-        .fruits-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1150px; margin: 0 auto; }
-        
-        .fruit-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 250px; text-align: left; box-shadow: 0 6px 15px rgba(0,0,0,0.6); position: relative; transition: 0.3s; }
-        .fruit-card:hover { border-color: #ff4500; transform: translateY(-3px); }
-        
-        /* Цвета редкости */
-        .rarity-badge { position: absolute; top: 15px; right: 15px; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-        .mythical { background: #bf00ff; color: #fff; box-shadow: 0 0 10px #bf00ff; }
-        .legendary { background: #d4af37; color: #000; }
-        .rare { background: #2196f3; color: #fff; }
-        .common { background: #757575; color: #fff; }
-        
-        h3 { margin-top: 0; font-size: 20px; color: #fff; max-width: 150px; }
-        .prices { font-size: 14px; margin: 10px 0; line-height: 1.5; }
-        .price-beli { color: #4caf50; font-weight: bold; }
-        .price-robux { color: #00bcd4; font-weight: bold; }
-        
-        .best-for { font-size: 13px; color: #aaa; background: #1c1c1c; padding: 8px; border-radius: 6px; border: 1px solid #2d2d2d; margin-top: 10px; }
-        .best-for strong { color: #ff9800; }
-    </style>
+    <title>Каталог Фруктов — База Знаний Blox Fruits</title>
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
@@ -52,116 +22,460 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🍎 Каталог Дьявольских Фруктов</h1>
-    <p class="subtitle">Полный список плодов, их официальная стоимость у Дилера и основное назначение в игре.</p>
+    <h1>🍇 Интерактивный Каталог Дьявольских Фруктов</h1>
+    <p class="subtitle">Полная энциклопедия способностей, типов и точных цен на фрукты в Blox Fruits.</p>
 
-    <!-- СЕКЦИЯ: ПРИРОДНЫЕ (NATURAL) -->
-    <div class="section-title">✨ Природные Фрукты (Natural)</div>
-    <div class="fruits-grid">
-        
-        <div class="fruit-card">
-            <div class="rarity-badge mythical">Мифический</div>
-            <h3>Spirit</h3>
-            <div class="prices">
-                <span class="price-beli">💰 3,400,000 Beli</span><br>
-                <span class="price-robux">💎 2,550 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Огромный AoE урон, сильные духи компаньоны, отлично для рейдов.</div>
+    <!-- Продвинутые кросс-фильтры -->
+    <div class="filter-section">
+        <div class="filter-label">Редкость Фрукта</div>
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="rarity" data-value="all" onclick="applyFilter(this)">Все редкости</button>
+            <button class="filter-btn" data-filter="rarity" data-value="mythical" onclick="applyFilter(this)">🟣 Мифические</button>
+            <button class="filter-btn" data-filter="rarity" data-value="legendary" onclick="applyFilter(this)">🟡 Легендарные</button>
+            <button class="filter-btn" data-filter="rarity" data-value="rare" onclick="applyFilter(this)">🔵 Редкие</button>
+            <button class="filter-btn" data-filter="rarity" data-value="budget" onclick="applyFilter(this)">🟢 Обычные/Необычные</button>
         </div>
-
-        <div class="fruit-card">
-            <div class="rarity-badge legendary">Легендарный</div>
-            <h3>Portal</h3>
-            <div class="prices">
-                <span class="price-beli">💰 1,900,000 Beli</span><br>
-                <span class="price-robux">💎 2,000 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Лучшая мобильность в игре, идеален для побега или внезапного PvP.</div>
+        <div class="filter-label">Класс / Тип силы</div>
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="type" data-value="all" onclick="applyFilter(this)">Все типы</button>
+            <button class="filter-btn" data-filter="type" data-value="natural" onclick="applyFilter(this)">🧱 Естественный (Парамеция)</button>
+            <button class="filter-btn" data-filter="type" data-value="elemental" onclick="applyFilter(this)">🌋 Стихийный (Логия)</button>
+            <button class="filter-btn" data-filter="type" data-value="beast" onclick="applyFilter(this)">🐆 Звериный (Зоан)</button>
         </div>
-
-        <div class="fruit-card">
-            <div class="rarity-badge rare">Редкий</div>
-            <h3>Light</h3>
-            <div class="prices">
-                <span class="price-beli">💰 650,000 Beli</span><br>
-                <span class="price-robux">💎 1,100 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Самый быстрый полет, встроенный меч, топ для прокачки в Первом Море.</div>
-        </div>
-
     </div>
 
-    <!-- СЕКЦИЯ: СТИХИЙНЫЕ (ELEMENTAL) -->
-    <div class="section-title">🔥 Стихийные Фрукты (Elemental / Logia)</div>
-    <div class="fruits-grid">
+    <!-- Начало контейнера для карточек -->
+    <div class="fruits-container">
+    <style>
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
+        nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
+        nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
+        h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 30px; }
         
-        <div class="fruit-card">
-            <div class="rarity-badge mythical">Мифический</div>
-            <h3>Dough</h3>
-            <div class="prices">
-                <span class="price-beli">💰 2,800,000 Beli</span><br>
-                <span class="price-robux">💎 2,400 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Пробужденная версия дает бесконечные оглушающие PvP комбо.</div>
-        </div>
+        /* Панель фильтров */
+        .filter-section { background: #141414; border: 1px solid #222; border-radius: 12px; padding: 15px; max-width: 1000px; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .filter-label { font-size: 12px; color: #666; text-transform: uppercase; font-weight: bold; width: 100%; margin-bottom: 2px; }
+        .filter-btn { background: #1c1c1c; border: 1px solid #333; color: #aaa; padding: 8px 16px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { border-color: #ff4500; color: #fff; background: #2a120a; box-shadow: 0 0 8px rgba(255, 69, 0, 0.3); }
 
-        <div class="fruit-card">
-            <div class="rarity-badge legendary">Легендарный</div>
-            <h3>Blizzard</h3>
-            <div class="prices">
-                <span class="price-beli">💰 2,400,000 Beli</span><br>
-                <span class="price-robux">💎 2,250 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Огромная ледяная буря, стягивающая врагов, шикарно для фарма фабрики.</div>
-        </div>
-
-        <div class="fruit-card">
-            <div class="rarity-badge rare">Редкий</div>
-            <h3>Magma</h3>
-            <div class="prices">
-                <span class="price-beli">💰 850,000 Beli</span><br>
-                <span class="price-robux">💎 1,300 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Безумный урон по площади, позволяет ходить по воде после пробуждения.</div>
-        </div>
-
-    </div>
-
-    <!-- СЕКЦИЯ: ЗВЕРИНЫЕ (BEAST) -->
-    <div class="section-title">🐉 Зверинные Фрукты (Beast / Zoan)</div>
-    <div class="fruits-grid">
+        /* Контейнер карточек */
+        .fruits-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1400px; margin: 0 auto; }
+        .fruit-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 20px; width: 290px; text-align: left; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.7); transition: transform 0.2s, border-color 0.2s; }
+        .fruit-card:hover { transform: translateY(-3px); border-color: #ff4500; }
         
-        <div class="fruit-card">
-            <div class="rarity-badge mythical">Мифический</div>
-            <h3>Kitsune</h3>
-            <div class="prices">
-                <span class="price-beli">💰 8,000,000 Beli</span><br>
-                <span class="price-robux">💎 4,000 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Невероятная скорость бега, мощные М1 удары лапами, мета 2026 года.</div>
+        /* Бейджи редкости */
+        .fruit-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        .common .fruit-badge { background: #555; color: #fff; }
+        .uncommon .fruit-badge { background: #2b752b; color: #fff; }
+        .rare .fruit-badge { background: #1e90ff; color: #fff; box-shadow: 0 0 8px #1e90ff; }
+        .legendary .fruit-badge { background: #d4af37; color: #000; box-shadow: 0 0 8px #d4af37; }
+        .mythical .fruit-badge { background: #bf00ff; color: #fff; box-shadow: 0 0 12px #bf00ff; }
+        
+        h3 { color: #ff6347; margin: 5px 0 10px 0; font-size: 19px; display: flex; align-items: center; gap: 6px; padding-right: 75px; line-height: 1.2; }
+        .price-line { color: #4caf50; font-size: 14px; font-weight: bold; margin: 4px 0; }
+        .robux-price { color: #3498db; font-size: 13px; font-weight: bold; margin-bottom: 10px; }
+        p { font-size: 13.5px; line-height: 1.5; color: #ccc; margin: 6px 0; }
+        strong { color: #fff; font-weight: 600; }
+        
+        /* Тег типа фрукта */
+        .type-tag { display: inline-block; background: #222; border: 1px solid #444; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #ff9800; font-weight: bold; margin-top: 5px; }
+    </style>
+</head>
+        <!-- МИФИЧЕСКИЕ ФРУКТЫ -->
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="beast">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Kitsune (Кицунэ)</h3>
+            <div class="price-line">💵 Бели: 8,000,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 4,000</div>
+            <p><strong>Особенности:</strong> Бешеная скорость, шкала хвостов и превращение в лису. Топовый спам-фрукт.</p>
+            <span class="type-tag">Зоан</span>
         </div>
 
-        <div class="fruit-card">
-            <div class="rarity-badge mythical">Мифический</div>
-            <h3>Dragon</h3>
-            <div class="prices">
-                <span class="price-beli">💰 3,500,000 Beli</span><br>
-                <span class="price-robux">💎 2,600 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Массивное превращение в дракона, огромный бафф к защите и урону.</div>
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="beast">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Leopard (Леопард)</h3>
+            <div class="price-line">💵 Бели: 5,000,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 3,000</div>
+            <p><strong>Особенности:</strong> Огромная скорость атак и высокая мобильность. Очень силен в ближнем PvP.</p>
+            <span class="type-tag">Зоан</span>
         </div>
 
-        <div class="fruit-card">
-            <div class="rarity-badge legendary">Легендарный</div>
-            <h3>Buddha</h3>
-            <div class="prices">
-                <span class="price-beli">💰 1,200,000 Beli</span><br>
-                <span class="price-robux">💎 1,650 Robux</span>
-            </div>
-            <div class="best-for"><strong>Плюсы:</strong> Превращает в гиганта, увеличивая дальность ударов мечом в разы.</div>
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="beast">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Dragon (Дракон)</h3>
+            <div class="price-line">💵 Бели: 3,500,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,600</div>
+            <p><strong>Особенности:</strong> Огромный радиус поражения (AoE), полет и мощная защита в форме дракона.</p>
+            <span class="type-tag">Зоан</span>
         </div>
 
-    </div>
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Dough (Тесто)</h3>
+            <div class="price-line">💵 Бели: 2,800,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,400</div>
+            <p><strong>Особенности:</strong> Король PvP комбо после пробуждения V2. Намертво задерживает врагов.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
 
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="beast">
+            <span class="fruit-badge">Мифический</span>
+            <h3>T-Rex (Тирекс)</h3>
+            <div class="price-line">💵 Бели: 2,700,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,350</div>
+            <p><strong>Особенности:</strong> Постоянный урон от кровотечения. Идеален для агрессивного стиля боя.</p>
+            <span class="type-tag">Зоан</span>
+        </div>
+
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Spirit (Дух)</h3>
+            <div class="price-line">💵 Бели: 3,400,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,550</div>
+            <p><strong>Особенности:</strong> Призывает ледяных духов для лечения и огненных духов для нанесения урона.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Control (Контроль)</h3>
+            <div class="price-line">💵 Бели: 3,200,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,500</div>
+            <p><strong>Особенности:</strong> Создает зону «Room», внутри которой можно швырять здания и телепортироваться.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Venom (Яд)</h3>
+            <div class="price-line">💵 Бели: 3,000,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,450</div>
+            <p><strong>Особенности:</strong> Оставляет ядовитые лужи на земле, которые наносят пассивный урон.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Shadow (Тень)</h3>
+            <div class="price-line">💵 Бели: 2,900,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,425</div>
+            <p><strong>Особенности:</strong> Набирает шкалу тени. Ульта крадет здоровье у всех врагов вокруг.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card mythical" data-rarity="mythical" data-type="natural">
+            <span class="fruit-badge">Мифический</span>
+            <h3>Gravity (Гравитация)</h3>
+            <div class="price-line">💵 Бели: 2,500,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,300</div>
+            <p><strong>Особенности:</strong> Призывает огромные метеориты. Низкий спрос в трейдах, но большой урон.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <!-- ЛЕГЕНДАРНЫЕ ФРУКТЫ -->
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="beast">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Buddha (Будда)</h3>
+            <div class="price-line">💵 Бели: 1,200,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,650</div>
+            <p><strong>Особенности:</strong> Лучший фрукт для фарма. Дает огромный радиус атак ближнего боя и защиту.</p>
+            <span class="type-tag">Зоан</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Portal (Портал)</h3>
+            <div class="price-line">💵 Бели: 1,900,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,000</div>
+            <p><strong>Особенности:</strong> Телепортация в любую точку карты. Незаменим для охотников за головами.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="elemental">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Blizzard (Вьюга)</h3>
+            <div class="price-line">💵 Бели: 2,400,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,250</div>
+            <p><strong>Особенности:</strong> Создает ледяные ураганы. Идеально подходит для зачистки толпы мобов.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Sound (Звук)</h3>
+            <div class="price-line">💵 Бели: 1,700,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,900</div>
+            <p><strong>Особенности:</strong> Создает золотой щит для союзников и атакует мощными звуковыми волнами.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Rumble (Гром)</h3>
+            <div class="price-line">💵 Бели: 2,100,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,100</div>
+            <p><strong>Особенности:</strong> Мгновенные молниеносные телепорты и долгие оглушения (стан) врагов.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Pain (Боль / Лапа)</h3>
+            <div class="price-line">💵 Бели: 2,300,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,200</div>
+            <p><strong>Особенности:</strong> Дальнобойные атаки в виде отпечатков лап. Требует хорошего прицеливания.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Love (Любовь)</h3>
+            <div class="price-line">💵 Бели: 1,300,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,700</div>
+            <p><strong>Особенности:</strong> Полет на розовом фламинго и призыв питомца, который сражается за вас.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="natural">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Spider (Паук)</h3>
+            <div class="price-line">💵 Бели: 1,500,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,800</div>
+            <p><strong>Особенности:</strong> Полет на паутине. После пробуждения выдает огромный урон издалека.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card legendary" data-rarity="legendary" data-type="beast">
+            <span class="fruit-badge">Легендарный</span>
+            <h3>Phoenix (Феникс)</h3>
+            <div class="price-line">💵 Бели: 1,800,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 2,000</div>
+            <p><strong>Особенности:</strong> Быстрое лечение себя и своей команды прямо во время полета.</p>
+            <span class="type-tag">Зоан</span>
+        </div>
+        <!-- РЕДКИЕ ФРУКТЫ -->
+        <div class="fruit-card rare" data-rarity="rare" data-type="elemental">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Magma (Магма)</h3>
+            <div class="price-line">💵 Бели: 850,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,300</div>
+            <p><strong>Особенности:</strong> Топ-1 фрукт по урону по боссам и Морским Зверям (Sea Beasts). Позволяет ходить по воде.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="elemental">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Light (Свет)</h3>
+            <div class="price-line">💵 Бели: 650,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,100</div>
+            <p><strong>Особенности:</strong> Лучший выбор для прокачки в Первом Море. Самый быстрый полет в игре и встроенный меч.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="natural">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Ghost (Призрак)</h3>
+            <div class="price-line">💵 Бели: 940,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,275</div>
+            <p><strong>Особенности:</strong> Дает вторую жизнь (возрождение после гибели) и призывает духов-помощников.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="natural">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Quake (Землетрясение)</h3>
+            <div class="price-line">💵 Бели: 1,000,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,500</div>
+            <p><strong>Особенности:</strong> Создает мощные ударные волны, которые ломают комбо соперников в PvP.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="natural">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Rubber (Резина)</h3>
+            <div class="price-line">💵 Бели: 750,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,200</div>
+            <p><strong>Особенности:</strong> Имеет полную невосприимчивость к атакам громом (Rumble). Быстрые пулеметные удары.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="natural">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Barrier (Барьер)</h3>
+            <div class="price-line">💵 Бели: 800,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,250</div>
+            <p><strong>Особенности:</strong> Создает лестницы и стены, блокируя передвижение мобов и других игроков.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card rare" data-rarity="rare" data-type="natural">
+            <span class="fruit-badge">Редкий</span>
+            <h3>Diamond (Алмаз)</h3>
+            <div class="price-line">💵 Бели: 600,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 1,000</div>
+            <p><strong>Особенности:</strong> Покрывает тело алмазами, значительно снижая получаемый от врагов урон.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <!-- НЕОБЫЧНЫЕ И ОБЫЧНЫЕ ФРУКТЫ (BUDGET) -->
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="elemental">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Ice (Лёд)</h3>
+            <div class="price-line">💵 Бели: 350,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 750</div>
+            <p><strong>Особенности:</strong> Отличный бюджетный фрукт для PvP. Замораживает цель на месте для легкого комбо мечом.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="elemental">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Dark (Тьма)</h3>
+            <div class="price-line">💵 Бели: 500,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 950</div>
+            <p><strong>Особенности:</strong> Создает черные дыры. Ценится за долгое оглушение врагов при пробуждении.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="elemental">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Flame (Огонь)</h3>
+            <div class="price-line">💵 Бели: 250,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 550</div>
+            <p><strong>Особенности:</strong> Хороший стартовый логия-фрукт. Легко фармить мобов на начальных этапах игры.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="elemental">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Sand (Песок)</h3>
+            <div class="price-line">💵 Бели: 420,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 850</div>
+            <p><strong>Особенности:</strong> Обладает сильным уроном, но персонаж мгновенно получает урон при падении в воду.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="beast">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Falcon (Сокол)</h3>
+            <div class="price-line">💵 Бели: 300,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 650</div>
+            <p><strong>Особенности:</strong> Дает крылья для планирования в воздухе и быстрые прыжки на врага.</p>
+            <span class="type-tag">Зоан</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Spring (Пружина)</h3>
+            <div class="price-line">💵 Бели: 60,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 180</div>
+            <p><strong>Особенности:</strong> Позволяет отскакивать от стен и совершать безумные прыжки по территории.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Bomb (Бомба)</h3>
+            <div class="price-line">💵 Бели: 85,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 250</div>
+            <p><strong>Особенности:</strong> Взрывает все вокруг себя. Ульта заряжает мощный подрыв по площади.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card uncommon" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Необычный</span>
+            <h3>Spike (Шипы)</h3>
+            <div class="price-line">💵 Бели: 180,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 380</div>
+            <p><strong>Особенности:</strong> Выпускает во врагов шипованные сферы и создает заграждения на земле.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card common" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Обычный</span>
+            <h3>Chop (Разрез)</h3>
+            <div class="price-line">💵 Бели: 30,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 100</div>
+            <p><strong>Особенности:</strong> Дает пассивный иммунитет к любым ударам мечей. Идеален против мечников.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card common" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Обычный</span>
+            <h3>Rocket (Ракета)</h3>
+            <div class="price-line">💵 Бели: 5,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 50</div>
+            <p><strong>Особенности:</strong> Самый дешевый и доступный фрукт. Простые взрывные атаки для новичков.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card common" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Обычный</span>
+            <h3>Spin (Вращение)</h3>
+            <div class="price-line">💵 Бели: 7,500</div>
+            <div class="robux-price">💎 Робуксы: R$ 75</div>
+            <p><strong>Особенности:</strong> Позволяет крутиться и взлетать в воздух как вертолет, атакуя лопастями.</p>
+            <span class="type-tag">Парамеция</span>
+        </div>
+
+        <div class="fruit-card common" data-rarity="budget" data-type="natural">
+            <span class="fruit-badge">Обычный</span>
+            <h3>Smoke (Дым)</h3>
+            <div class="price-line">💵 Бели: 100,000</div>
+            <div class="robux-price">💎 Робуксы: R$ 300</div>
+            <p><strong>Особенности:</strong> Бюджетный элемент Логия. Дает бесконечный дымовой полет с нанесением урона.</p>
+            <span class="type-tag">Логия</span>
+        </div>
+    </div> <!-- КОНЕЦ КОНТЕЙНЕРА -->
+    <!-- СКРИПТ ИНТЕРАКТИВНОЙ ФИЛЬТРАЦИИ -->
+    <script>
+        // Объект для отслеживания выбранных фильтров
+        let activeFilters = {
+            rarity: 'all',
+            type: 'all'
+        };
+
+        function applyFilter(element) {
+            // Узнаем, какую категорию и значение нажал пользователь
+            const filterType = element.getAttribute('data-filter'); // "rarity" или "type"
+            const filterValue = element.getAttribute('data-value');   // например, "mythical" или "beast"
+
+            // Находим все кнопки в той же группе и убираем у них класс active
+            const parentGroup = element.parentElement;
+            parentGroup.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Добавляем класс active только той кнопке, на которую кликнули
+            element.classList.add('active');
+
+            // Записываем новое значение в наш объект отслеживания
+            activeFilters[filterType] = filterValue;
+
+            // Запускаем перебор всех карточек на странице
+            const cards = document.querySelectorAll('.fruit-card');
+            
+            cards.forEach(card => {
+                // Читаем параметры текущей карточки фрукта
+                const cardRarity = card.getAttribute('data-rarity');
+                const cardType = card.getAttribute('data-type');
+
+                // Проверяем, подходит ли фрукт под выбранную редкость
+                const matchRarity = (activeFilters.rarity === 'all') || (activeFilters.rarity === cardRarity);
+                
+                // Проверяем, подходит ли фрукт под выбранный тип силы
+                const matchType = (activeFilters.type === 'all') || (activeFilters.type === cardType);
+
+                // Если фрукт прошел обе проверки — показываем его, иначе — скрываем
+                if (matchRarity && matchType) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расы и Прокачка — База Знаний Blox Fruits</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
+    <title>Расы и Пробуждение — База Знаний Blox Fruits</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        body { background: #0c0c0c; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
         nav { background: #141414; padding: 15px; border-radius: 8px; border: 1px solid #222; margin-bottom: 30px; }
         nav a { color: #ff4500; text-decoration: none; font-weight: bold; margin: 0 10px; transition: 0.3s; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ff4500; }
         h1 { color: #ff4500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
-        .subtitle { color: #aaa; font-size: 15px; margin-top: 0; margin-bottom: 40px; }
+        .subtitle { color: #aaa; font-size: 15px; margin-bottom: 30px; }
         
-        .races-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; max-width: 1200px; margin: 0 auto; }
-        .race-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 25px; width: 320px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: all 0.3s ease; position: relative; }
-        .race-card:hover { border-color: #ff4500; transform: translateY(-5px); box-shadow: 0 12px 25px rgba(255, 69, 0, 0.2); }
+        /* Сетка рас */
+        .races-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .race-card { background: #141414; border: 2px solid #252525; border-radius: 12px; padding: 25px; width: 280px; text-align: left; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.7); transition: transform 0.2s, border-color 0.2s; }
+        .race-card:hover { transform: translateY(-3px); border-color: #ff4500; box-shadow: 0 0 15px rgba(255, 69, 0, 0.3); }
         
-        .race-badge { position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #fff; }
-        .badge-start { background: #4caf50; }
-        .badge-special { background: #9c27b0; box-shadow: 0 0 10px #9c27b0; }
+        .race-type { display: inline-block; background: #222; border: 1px solid #444; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #ff9800; margin-bottom: 12px; }
+        .special-r .race-type { color: #bf00ff; border-color: #bf00ff; }
+
+        h3 { color: #ff6347; margin: 0 0 10px 0; font-size: 22px; }
+        p { font-size: 13.5px; line-height: 1.5; color: #ccc; margin: 6px 0; }
+        strong { color: #fff; }
         
-        h3 { color: #fff; margin-top: 5px; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid #252525; padding-bottom: 10px; }
+        .race-btn { width: 100%; background: #1c1c1c; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .race-btn:hover { background: #ff4500; color: #000; border-color: #ff4500; }
+
+        /* Всплывающее окно (Поп-ап рас) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
         
-        .buffs-box { background: #1c1c1c; padding: 12px; border-radius: 8px; border: 1px solid #2d2d2d; margin-bottom: 15px; }
-        .buffs-title { font-size: 13px; font-weight: bold; color: #ff9800; text-transform: uppercase; margin-bottom: 5px; }
-        .buffs-list { font-size: 14px; color: #ffeb3b; margin: 0; padding-left: 20px; line-height: 1.5; }
+        .modal-card { background: #141414; border: 2px solid #ff4500; border-radius: 12px; padding: 25px; max-width: 500px; width: 90%; text-align: left; box-shadow: 0 0 25px rgba(255, 69, 0, 0.4); transform: scale(0.8); transition: transform 0.3s ease; position: relative; max-height: 85vh; overflow-y: auto; }
+        .modal-overlay.active .modal-card { transform: scale(1); }
         
-        .get-info { font-size: 14px; color: #ccc; line-height: 1.6; }
-        .get-info strong { color: #ff6347; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #666; font-size: 22px; cursor: pointer; transition: 0.2s; }
+        .modal-close:hover { color: #ff4500; }
         
-        .guide-box { max-width: 750px; margin: 40px auto 0 auto; background: #141414; border: 2px dashed #ff4500; padding: 25px; border-radius: 12px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
-        .guide-box h2 { color: #ff4500; margin-top: 0; font-size: 20px; text-align: center; border-bottom: 1px solid #252525; padding-bottom: 10px; }
-        .guide-box h3 { color: #ff9800; font-size: 16px; margin-top: 15px; border: none; padding: 0; }
-        .guide-box p, .guide-box ol { margin: 10px 0; color: #ccc; font-size: 14px; line-height: 1.6; }
-        .guide-box ol { padding-left: 20px; }
+        .modal-title { font-size: 24px; color: #ff4500; margin-top: 0; margin-bottom: 15px; }
+        .info-box { background: #1c1c1c; padding: 12px; border-radius: 6px; margin-top: 12px; border-left: 4px solid #ff4500; }
+        .info-box p { margin: 4px 0; }
     </style>
 </head>
 <body>
@@ -54,128 +59,120 @@
         <a href="contact.html">Связь со мной</a>
     </nav>
 
-    <h1>🧬 Расы и их Способности</h1>
-    <p class="subtitle">Узнай особенности каждой расы, какие баффы они дают в бою и как прокачать их до максимальной силы!</p>
-
+    <h1>🧬 Расы, Эволюция и Пробуждение V4</h1>
+    <p class="subtitle">Нажми на интересующую тебя расу, чтобы мгновенно прочитать гайд по её получению и способностям!</p>
     <div class="races-container">
-        
-        <!-- Раса 1: Человек -->
+        <!-- HUMAN -->
         <div class="race-card">
-            <div class="race-badge badge-start">Базовая</div>
-            <h3>Человек (Human)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>💥 Безумный прирост к PvP урону</li>
-                    <li>⚡ Исчезновение (Flash Step) перезаряжается быстрее</li>
-                    <li>🩸 Активация «Психоза» на V3 увеличивает урон при потере ХП</li>
-                </ul>
-            </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Дается при первом заходе в игру с шансом 25%. Также можно сменить у Торговца Расами.
-            </div>
+            <span class="race-type">Базовая раса</span>
+            <h3>🧑 Человек (Human)</h3>
+            <p><strong>Главная фишка:</strong> Безумный урон при падении здоровья (Ярость берсерка).</p>
+            <button class="race-btn" onclick="showRace('human')">Как получить и фишки</button>
         </div>
 
-        <!-- Раса 2: Рыбочеловек -->
+        <!-- MINK -->
         <div class="race-card">
-            <div class="race-badge badge-start">Базовая</div>
-            <h3>Акула (Shark)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>🌊 Полный иммунитет к урону от воды (на V2)</li>
-                    <li>🛡️ Огромный щит, блокирующий урон (на V3)</li>
-                    <li>🦈 Повышенная скорость плавания</li>
-                </ul>
-            </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Выпадает на старте с шансом 25% или покупается за Слёзы/Робуксы у NPC.
-            </div>
+            <span class="race-type">Базовая раса</span>
+            <h3>🐰 Кролик (Mink)</h3>
+            <p><strong>Главная фишка:</strong> Максимальная скорость бега и бесконечные быстрые рывки.</p>
+            <button class="race-btn" onclick="showRace('mink')">Как получить и фишки</button>
         </div>
 
-        <!-- Раса 3: Минки -->
+        <!-- SKY -->
         <div class="race-card">
-            <div class="race-badge badge-start">Базовая</div>
-            <h3>Кролик (Mink)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>🏃 Самая высокая скорость бега в игре</li>
-                    <li>🌀 Дальность рывка увеличена</li>
-                    <li>⚡ Минимальные затраты энергии на бег</li>
-                </ul>
-            </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Стартовый шанс 25% или случайный реролл у Алхимика.
-            </div>
+            <span class="race-type">Базовая раса</span>
+            <h3>👼 Ангел (Sky / Angel)</h3>
+            <p><strong>Главная фишка:</strong> Высокие прыжки, полет и пассивное оглушение врагов вокруг.</p>
+            <button class="race-btn" onclick="showRace('sky')">Как получить и фишки</button>
         </div>
 
-        <!-- Раса 4: Ангел -->
+        <!-- SHARK -->
         <div class="race-card">
-            <div class="race-badge badge-start">Базовая</div>
-            <h3>Ангел (Angel)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>🪶 Высокие прыжки и полет в воздухе</li>
-                    <li>💚 Быстрая регенерация здоровья и энергии</li>
-                    <li>✨ Аура, которая оглушает врагов поблизости на V3</li>
-                </ul>
-            </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Стартовый шанс 25% либо стандартный реролл расы.
-            </div>
+            <span class="race-type">Базовая раса</span>
+            <h3>🦈 Акула (Shark)</h3>
+            <p><strong>Главная фишка:</strong> Полный иммунитет к урону от воды и мощные защитные щиты.</p>
+            <button class="race-btn" onclick="showRace('shark')">Как получить и фишки</button>
         </div>
 
-        <!-- Раса 5: Киборг -->
-        <div class="race-card">
-            <div class="race-badge badge-special">Секретная</div>
-            <h3>Киборг (Cyborg)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>⚡ Электрический купол, бьющий током по площади</li>
-                    <li>🛡️ Повышенная защита от комбо противника</li>
-                    <li>🔋 Быстрое восполнение энергии при получении урона</li>
-                </ul>
-            </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Пройти скрытый квест с Кулаком Тьмы (Fist of Darkness) и Ядром во Втором Море. Стоимость: 2,500 Фрагментов.
-            </div>
+        <!-- CYBORG -->
+        <div class="race-card special-r">
+            <span class="race-type">Секретная раса</span>
+            <h3>🤖 Киборг (Cyborg)</h3>
+            <p><strong>Главная фишка:</strong> Цепные молнии по области и жесткий слом комбо противника.</p>
+            <button class="race-btn" onclick="showRace('cyborg')">Как получить и фишки</button>
         </div>
 
-        <!-- Раса 6: Гуль -->
-        <div class="race-card">
-            <div class="race-badge badge-special">Секретная</div>
-            <h3>Гуль (Ghoul)</h3>
-            <div class="buffs-box">
-                <div class="buffs-title font-bold">Главные баффы:</div>
-                <ul class="buffs-list">
-                    <li>🧛 Вампиризм (восстановление ХП от ударов стилей боя)</li>
-                    <li>🌙 Огромная скорость бега в ночное время</li>
-                    <li>⏳ Сокращение перезарядки всех скиллов</li>
-                </ul>
+        <!-- GHOUL -->
+        <div class="race-card special-r">
+            <span class="race-type">Секретная раса</span>
+            <h3>🧛 Гуль (Ghoul)</h3>
+            <p><strong>Главная фишка:</strong> Вампиризм (кража ХП), ускорение ночью и быстрый откат скиллов.</p>
+            <button class="race-btn" onclick="showRace('ghoul')">Как получить и фишки</button>
+        </div>
+    </div> <!-- Конец сетки рас -->
+
+    <!-- ОКНО МОДАЛКИ (ПОП-АП ГАЙД) -->
+    <div class="modal-overlay" id="race-modal" onclick="closeModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="document.getElementById('race-modal').classList.remove('active')">×</button>
+            <h2 class="modal-title" id="r-title">Название расы</h2>
+            
+            <div class="info-box">
+                <p style="color: #ff4500; font-weight: bold; margin-bottom: 5px;">🔥 Что делает раса (Пассивки по уровням):</p>
+                <div id="r-abilities">Загрузка...</div>
             </div>
-            <div class="get-info">
-                <strong>Как получить:</strong> Поговорить с NPC Экспериментатор на Проклятом Корабле во Втором Море. Требуется: 100 Эктоплазмы и Факел Ада.
+
+            <div class="info-box" style="border-left-color: #3498db;">
+                <p style="color: #3498db; font-weight: bold; margin-bottom: 5px;">🛠️ Пошаговый гайд: Как получить версии V1-V4:</p>
+                <div id="r-guide">Загрузка...</div>
             </div>
         </div>
-
     </div>
 
-    <!-- Краткий Гайд по Прокачке -->
-    <div class="guide-box">
-        <h2>🚀 Как пробуждать расы (V2, V3, V4)</h2>
-        
-        <h3>Раса V2 (Второе море)</h3>
-        <p>Поговори с Алхимиком в Зеленой Зоне, найди 3 цветка (Красный, Синий, Желтый) по всей карте и принеси ему 500,000 Бели.</p>
-        
-        <h3>Раса V3 (Второе море)</h3>
-        <p>Победи босса Джереми, найди секретную комнату под скалой, возьми квест у NPC Сын Ароу и выполни индивидуальное задание для своей расы (например, убить 30 мобов). Стоимость: 2,000,000 Бели.</p>
-        
-        <h3>Раса V4 (Третье море)</h3>
-        <p>Самое мощное пробуждение. Требуется победить босса Король Теста или Индра, найти Мистический Остров во время Полнолуния, настроить зеркало на луну и пройти «Испытания Храма Времен» вместе с друзьями других рас.</p>
-    </div>
-
-</body>
-</html>
+    <!-- НАЧАЛО JAVASCRIPT-БАЗЫ -->
+    <script>
+        const racesDatabase = {
+            human: {
+                title: "🧑 Раса: Человек (Human)",
+                abilities: `<p><strong>V1:</strong> Базовая форма. Никаких бонусов.</p>
+                            <p><strong>V2:</strong> Увеличивает дальность рывка (Dash) и дает +2 дополнительных уклонения в Инстинкт.</p>
+                            <p><strong>V3:</strong> Активирует скилл <b>Psycho</b> (на 5 сек. дает огромный множитель урона в зависимости от того, сколько ХП ты потерял. Идеально для камбэков).</p>
+                            <p><strong>V4 (Пробуждение):</strong> Дает пассивку <b>Limit Break</b>. При заполнении шкалы ярости твой урон взлетает до небес, а атаки создают огромные взрывные волны.</p>`,
+                guide: `<p><b>V1:</b> Дается с шансом 25% при первом заходе в игру. Сбросить на нее можно у NPC Торто за 3,000 фрагментов.</p>
+                        <p><b>V2:</b> 2-е Море, Зеленая Зона. Поговори с Алхимиком, найди 3 цветка (Синий ночью, Красный днем, Желтый с мобов) и заплати 500,000 Бели.</p>
+                        <p><b>V3:</b> 2-е Море, Алтарь Ароу вручную. Победи 3 боссов (Джереми, Фахитора, Дайамонд) и заплати 2,000,000 Бели.</p>
+                        <p><b>V4:</b> 3-е Море, Замок в Облаках. Найди Мираж-остров в полнолуние, посмотри на луну с зеркалом, найди шестеренку, пройди испытание Храма Времени и победи друга в ПВП-дуэли.</p>`
+            },
+            mink: {
+                title: "🐰 Раса: Кролик (Mink)",
+                abilities: `<p><strong>V1:</strong> Пассивно увеличивает скорость бега на 2x.</p>
+                            <p><strong>V2:</strong> Снижает затраты энергии на рывки и делает их еще быстрее.</p>
+                            <p><strong>V3:</strong> Активирует скилл <b>Agility</b> (на 6.5 сек. увеличивает твою скорость бега до максимума и оставляет за тобой шлейф молний).</p>
+                            <p><strong>V4 (Пробуждение):</strong> Дает механику <b>Speed Invariant</b>. Твои рывки создают торнадо вокруг персонажа, которые затягивают и оглушают врагов, а скорость бега становится максимальной в игре.</p>`,
+                guide: `<p><b>V1:</b> Получается случайно при создании персонажа (25% шанс) или ролится за 3,000 фрагментов.</p>
+                        <p><b>V2:</b> Выполни квест Алхимика во 2-м море (собери 3 цветка: синий, красный, желтый) и отдай 500k бели.</p>
+                        <p><b>V3:</b> Квест NPC Ароу во 2-м море. Для Минк квеста нужно собрать 30 сундуков с деньгами по всему миру, после чего заплатить 2 млн бели.</p>
+                        <p><b>V4:</b> Активируй рычаг в Храме Времени в 3-м море. Пройди Испытание Скорости (успей добежать до финиша через лабиринт за время) и убей союзника.</p>`
+            },
+            sky: {
+                title: "👼 Раса: Ангел (Sky / Angel)",
+                abilities: `<p><strong>V1:</strong> Позволяет прыгать выше обычного (высокий мульти-прыжок).</p>
+                            <p><strong>V2:</strong> Дает пассивный полет (удержание кнопки прыжка позволяет парить в воздухе, тратя мало энергии).</p>
+                            <p><strong>V3:</strong> Активирует скилл <b>Heavenly Blood</b> (на 6.5 сек. восстанавливает огромное количество здоровья и энергии, а также регенит волю).</p>
+                            <p><strong>V4 (Пробуждение):</strong> Призывает <b>Крылья Короля</b>. Вокруг тебя появляется священная аура, которая намертво прижимает врагов к земле, замедляет их и не дает прожимать скиллы.</p>`,
+                guide: `<p><b>V1:</b> Ролится при старте (25% шанс) или покупается за фрагменты у NPC Торто.</p>
+                        <p><b>V2:</b> Принеси Алхимику в Зеленой зоне 3 цветка и заплати 500,000 Бели.</p>
+                        <p><b>V3:</b> Квест Ароу во 2-м море. Чтобы доказать силу Ангела, тебе нужно найти и убить другого игрока с расой Ангел.</p>
+                        <p><b>V4:</b> Пройди Испытание Полета в Храме Времени (3-е море). Тебе нужно прыгать по исчезающим платформам вверх, добраться до вершины и победить напарника в дуэли.</p>`
+            },
+            shark: {
+                title: "🦈 Раса: Акула (Shark)",
+                abilities: `<p><strong>V1:</strong> Снижает урон от падения в океанскую воду на 70%.</p>
+                            <p><strong>V2:</strong> Полный 100% иммунитет к урону от воды (можно плавать на любом фрукте!).</p>
+                            <p><strong>V3:</strong> Активирует скилл <b>Water Body</b> (на 6.5 сек. дает мощный щит, который блокирует 85% ЛЮБОГО входящего урона. Абсолютная имба против ваншот-комбо).</p>
+                            <p><strong>V4 (Пробуждение):</strong> Дает пассивку <b>Leviathan Armor</b>. При заполнении шкалы ты получаешь постоянный огромный щит поверх здоровья, а твои удары по врагам сильно замедляют их (эффект заморозки).</p>`,
+                guide: `<p><b>V1:</b> Случайный спавн при старте (25% шанс) или покупка у Торто во 2-м море за 3k фрагментов.</p>
+                        <p><b>V2:</b> Пройди стандартный квест Алхимика со сбором трех цветков (красный, синий, желтый) во 2-м море.</p>
+                        <p><b>V3:</b> Квест Ароу во 2-м море. Убей одного Морского Зверя (Sea Beast) в океане и вернись за наградой, отдав 2 млн бели.</p>
+                        <p><b>V4:</b> Пройди Испытание Воды в Храме Времени (3-е море). Тебе предстоит выжить под атаками огромного водного монстра, после чего одолеть друга в ПВП.</p>`
+            },
